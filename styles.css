@@ -37,24 +37,14 @@ a {
  #site-description {
     position: fixed;
     top: 0;
-    left: 0;
     width: 100%;
     background-color: black;
     padding: 0px;
     box-sizing: border-box;
 }
-#includeHtml2 {
+ #site-description-padd {
     top: 0;
-    left: 0;
     width: 100%;
-    color: black;
-    padding: 0px;
-    box-sizing: border-box;
-#site-description-padd {
-    top: 0;
-    left: 0;
-    width: 100%;
-    color: black;
     padding: 0px;
     box-sizing: border-box;
 }
