@@ -20,23 +20,19 @@ a {
     margin: 0 0px;
     text-decoration: underline;
 }
-    .grid-container {
-        display: flex;
-        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-        max-width: 100%;
-        gap: 10px;
-        padding-top: 0;
-        /* Vertically center */
-        justify-content: center;
-        align-items: center;
-    }
-    .grid-container img {
-	    max-width: 100%; /* Makes the image take up the full width of the column */
-	    height: auto; /* Enables maintaining aspect ratio */
-	}
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 10px;
+    padding-top: 0;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+}
  #site-description {
     position: fixed;
     top: 0;
+    left: 0;
     width: 100%;
     background-color: black;
     padding: 0px;
@@ -44,7 +40,9 @@ a {
 }
  #site-description-padd {
     top: 0;
+    left: 0;
     width: 100%;
+    color: black;
     padding: 0px;
     box-sizing: border-box;
 }
