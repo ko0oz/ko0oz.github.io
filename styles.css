@@ -43,7 +43,14 @@ a {
     padding: 0px;
     box-sizing: border-box;
 }
- #site-description-padd {
+#includeHtml2 {
+    top: 0;
+    left: 0;
+    width: 100%;
+    color: black;
+    padding: 0px;
+    box-sizing: border-box;
+#site-description-padd {
     top: 0;
     left: 0;
     width: 100%;
