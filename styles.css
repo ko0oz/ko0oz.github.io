@@ -21,10 +21,9 @@ a {
 .grid-container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 10px;
+    gap: 0px;
     padding-top: 0;
     justify-content: start;
-    align-items: center;
 }
 .project-container {
     justify-content: center;
@@ -35,7 +34,7 @@ a {
     height: auto; /* Enables maintaining aspect ratio */
 }
 .grid-item {
-    padding: 40px;
+    padding: 0px;
     text-align: center;
     border: 0px solid black;
 }
