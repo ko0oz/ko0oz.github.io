@@ -27,7 +27,7 @@ a {
     align-items: center;
 }
 .project-container {
-    justify-content: center;
+    justify-content: start;
     align-items: center;
 }
 .project-container img {
