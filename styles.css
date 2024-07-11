@@ -27,14 +27,9 @@ a {
     justify-content: center;
     align-items: center;
 }
-.project-element {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 10px;
-    color: red;
-    padding-top: 0;
-    justify-content: center;
-    align-items: center;
+.grid-container img {
+    max-width: 100%; /* Makes the image take up the full width of the column */
+    height: auto; /* Enables maintaining aspect ratio */
 }
  #site-description {
     top: 0;
