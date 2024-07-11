@@ -36,13 +36,6 @@ a {
     max-width: 100%; /* Makes the image take up the full width of the column */
     height: auto; /* Enables maintaining aspect ratio */
 }
- #site-description {
-    top: 0;
-    left: 0;
-    width: 100%;
-    padding: 0px;
-    box-sizing: border-box;
-}
 .grid-item {
     padding: 40px;
     text-align: center;
