@@ -29,6 +29,15 @@ a {
     align-items: center;
     font-size: 16px;
 }
+.project-element {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 10px;
+    padding-top: 0;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+}
  #site-description {
     top: 0;
     left: 0;
