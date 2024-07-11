@@ -1,19 +1,17 @@
 /* @charset "UTF-8"; */
 
 body {
-    background-color: white;
-    color: black;
+    background-color: black;
+    color: white;
     text-align: center;
     font-size: 24px;
     margin: 0;
     padding: 0;
 a {
-	color: black;
 }
 #site-description .filter-btn {
     background: none;
     border: none;
-    color: black;
     cursor: pointer;
     font-family: times;
     padding: 0px 0px;
@@ -23,10 +21,9 @@ a {
 .grid-container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 10px;
+    gap: 0px;
     padding-top: 0;
-    justify-content: center;
-    align-items: center;
+    justify-content: start;
 }
 .project-container {
     justify-content: center;
@@ -37,9 +34,9 @@ a {
     height: auto; /* Enables maintaining aspect ratio */
 }
 .grid-item {
-    padding: 40px;
+    padding: 0px;
     text-align: center;
-    border: 0px solid black;
+    border: 1px solid white;
 }
 .grid-item img {
     width: 100%;
