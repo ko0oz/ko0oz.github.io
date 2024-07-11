@@ -1,0 +1,45 @@
+/* @charset "UTF-8"; */
+
+body {
+    background-color: black;
+    color: white;
+    text-align: center;
+    font-size: 24px;
+    margin: 0;
+    padding: 0;
+a {
+}
+#site-description .filter-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: times;
+    padding: 0px 0px;
+    margin: 0 0px;
+    text-decoration: underline;
+}
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 0px;
+    padding-top: 0;
+    justify-content: start;
+}
+.project-container {
+    justify-content: center;
+    align-items: center;
+}
+.project-container img {
+    max-width: 100%; /* Makes the image take up the full width of the column */
+    height: auto; /* Enables maintaining aspect ratio */
+}
+.grid-item {
+    padding: 0px;
+    text-align: center;
+    border: 0px solid white;
+}
+.grid-item img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
