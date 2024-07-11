@@ -8,12 +8,10 @@ body {
     margin: 0;
     padding: 0;
 a {
-	color: white;
 }
 #site-description .filter-btn {
     background: none;
     border: none;
-    color: white;
     cursor: pointer;
     font-family: times;
     padding: 0px 0px;
