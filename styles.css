@@ -1,18 +1,18 @@
 /* @charset "UTF-8"; */
 
 body {
-    background-color: white;
-    color: black;
+    background-color: black;
+    color: white;
     text-align: center;
     font-size: 16px;
 }
 a {
-	color: blue;
+	color: white;
 }
 #site-description .filter-btn {
     background: none;
     border: none;
-    color: blue;
+    color: white;
     cursor: pointer;
     font-size: 16px;
     font-family: times;
@@ -49,7 +49,7 @@ a {
 .grid-item {
     padding: 40px;
     text-align: center;
-    border: 1px black;
+    border: 0px solid black;
 }
 .grid-item img {
     width: 100%;
