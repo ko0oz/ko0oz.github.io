@@ -6,6 +6,8 @@ img, picture, svg, video, canvas{
     vertical-align: middle; 
     background-repeat: no-repeat; 
     background-size: cover;
+    margin: 0;
+    padding: 0;
 }
 body, html{
     height: 100%; 
