@@ -36,6 +36,7 @@ a {
 .project-container img {
     max-width: 100%; /* Makes the image take up the full width of the column */
     height: auto; /* Enables maintaining aspect ratio */
+    object-fit: cover;
 }
 .grid-item {
     padding: 0px;
