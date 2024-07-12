@@ -11,7 +11,7 @@ img, picture, svg, video, canvas{
 }
 body, html{
     height: 100%;
-    font-family: Arial;
+    font-family: times;
 }
 a {
 	font-family: times;
