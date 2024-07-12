@@ -12,6 +12,9 @@ img, picture, svg, video, canvas{
 body, html{
     height: 100%; 
 }
+a {
+	font-family: Arial;
+	}
 body {
     background-color: black;
     color: white;
@@ -24,7 +27,7 @@ body {
     background: none;
     border: none;
     cursor: pointer;
-    font-family: times;
+    font-family: Arial;
     padding: 0px 0px;
     margin: 0 0px;
     text-decoration: underline;
