@@ -7,11 +7,9 @@ img, picture, svg, video, canvas{
     background-repeat: no-repeat; 
     background-size: cover;
 }
-
 body, html{
     height: 100%; 
 }
-
 body {
     background-color: black;
     color: white;
@@ -19,7 +17,6 @@ body {
     font-size: 24px;
     margin: 0;
     padding: 0;
-a {
 }
 #site-description .filter-btn {
     background: none;
@@ -37,16 +34,6 @@ a {
     padding-top: 0;
     justify-content: start;
 }
-.project-container {
-	max-width: 100%;
-	height: auto;
-    justify-content: center;
-    align-items: center;
-}
-.project-container img {
-    max-width: 100%; /* Makes the image take up the full width of the column */
-    height: auto; /* Enables maintaining aspect ratio */
-}
 .grid-item {
     padding: 0px;
     text-align: center;
@@ -56,3 +43,15 @@ a {
     height: auto;
     object-fit: cover;
 }
+/*
+.project-container {
+	max-width: 100%;
+	height: auto;
+    justify-content: center;
+    align-items: center;
+}
+.project-container img {
+    max-width: 100%;
+    height: auto;
+}
+*/
