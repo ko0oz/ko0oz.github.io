@@ -4,7 +4,6 @@ img, picture, svg, video, canvas{
     max-width: 100%;
     height: auto; 
     vertical-align: middle; 
-    font-style: italic; 
     background-repeat: no-repeat; 
     background-size: cover;
 }
@@ -22,10 +21,6 @@ body {
     padding: 0;
 a {
 }
-	img {
-	  max-width: 100%;
-	  height: auto;
-	}
 #site-description .filter-btn {
     background: none;
     border: none;
@@ -43,6 +38,8 @@ a {
     justify-content: start;
 }
 .project-container {
+	max-width: 100%;
+	height: auto;
     justify-content: center;
     align-items: center;
 }
