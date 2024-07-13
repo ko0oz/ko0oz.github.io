@@ -37,7 +37,7 @@ body {
 }
 .grid-container {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
     gap: 0px;
     padding-top: 0;
     justify-content: start;
@@ -50,6 +50,15 @@ body {
     width: 100%;
     height: auto;
     object-fit: cover;
+}
+@media all and (max-width: 600px) {
+	.grid-container {
+	    display: grid;
+	    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+	    gap: 0px;
+	    padding-top: 0;
+	    justify-content: start;
+	}
 }
 /*
 .project-container {
