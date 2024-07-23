@@ -51,6 +51,14 @@ body {
     height: auto;
     object-fit: cover;
 }
+.grid-container.index {
+    display: flex;
+    flex-direction: column;
+}
+
+.grid-item.index {
+    margin-bottom: 20px;
+}
 @media all and (max-width: 600px) {
 	.grid-container {
 	    display: grid;
