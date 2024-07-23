@@ -51,8 +51,10 @@ body {
     height: auto;
     object-fit: cover;
 }
+/*
 .archive-table {
 }
+*/
 @media all and (max-width: 600px) {
 	.grid-container {
 	    display: grid;
