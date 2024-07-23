@@ -51,6 +51,15 @@ body {
     height: auto;
     object-fit: cover;
 }
+.archive-table {
+}
+th.th-sort-asc::after {
+    content: " ▲";
+}
+
+th.th-sort-desc::after {
+    content: " ▼";
+}
 @media all and (max-width: 600px) {
 	.grid-container {
 	    display: grid;
