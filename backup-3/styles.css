@@ -1,0 +1,74 @@
+/* @charset "UTF-8"; */
+
+img, picture, svg, video, canvas{
+    max-width: 100%;
+    height: auto; 
+    vertical-align: middle; 
+    background-repeat: no-repeat; 
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+}
+body, html{
+    height: 100%;
+    font-family: times;
+}
+a {
+	font-family: times;
+	color: white;
+	}
+body {
+    background-color: black;
+    color: white;
+    text-align: center;
+    font-size: 24px;
+    margin: 0;
+    padding: 0;
+}
+#site-description .filter-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: white;
+    font-family: times;
+    padding: 0px 0px;
+    margin: 0 0px;
+    text-decoration: underline;
+}
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 0px;
+    padding-top: 0;
+    justify-content: start;
+}
+.grid-item {
+    padding: 0px;
+    text-align: center;
+}
+.grid-item img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+@media all and (max-width: 600px) {
+	.grid-container {
+	    display: grid;
+	    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+	    gap: 0px;
+	    padding-top: 0;
+	    justify-content: start;
+	}
+}
+/*
+.project-container {
+	max-width: 100%;
+	height: auto;
+    justify-content: center;
+    align-items: center;
+}
+.project-container img {
+    max-width: 100%;
+    height: auto;
+}
+*/
