@@ -3,7 +3,7 @@
 const lastModif = document.querySelector('#lastModified')
 
 // Отображение даты и времени последнего изменения документа с секундами, днями недели, 24-часовым форматом и часовым поясом на английском языке
-const options = { year: 'numeric', month: 'long', day: 'numeric', weekday: 'long', hour: '2-digit', minute: '2-digit', second: '2-digit', timeZoneName: 'short' };
+const options = { year: 'numeric', month: 'long', day: 'numeric', weekday: 'long', hour: '2-digit', minute: '2-digit', second: '2-digit', timeZoneName: 'short', hour12: false};
 lastModif.textContent = new Date(document.lastModified).toLocaleString('en-US', options);
 
 lastModif.setAttribute("data-time", document.lastModified)
