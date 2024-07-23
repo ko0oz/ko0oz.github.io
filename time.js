@@ -1,7 +1,11 @@
 'use strict'
 
 const lastModif = document.querySelector('#lastModified')
-lastModif.textContent = new Date(document.lastModified)
+
+// Отображение даты и времени последнего изменения документа на английском языке
+const options = { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' };
+lastModif.textContent = new Date(document.lastModified).toLocaleString('en-US', options);
+
 lastModif.setAttribute("data-time", document.lastModified)
 
 lastModif.addEventListener('click', function (event) {
@@ -10,15 +14,15 @@ lastModif.addEventListener('click', function (event) {
 
   let progress = new Date(diff)
   if (progress.getUTCFullYear() - 1970) {
-    event.target.textContent = progress.getUTCFullYear() - 1970 + ' year ago';
+    event.target.textContent = progress.getUTCFullYear() - 1970 + ' year' + (progress.getUTCFullYear() - 1971 > -1 ? 's' : '') + ' ago';
   } else if (progress.getUTCMonth()) {
-    event.target.textContent = progress.getUTCMonth() + ' month ago';
+    event.target.textContent = progress.getUTCMonth() + ' month' + (progress.getUTCMonth() > 1 ? 's' : '') + ' ago';
   } else if (progress.getUTCDate() - 1) {
-    event.target.textContent = progress.getUTCDate() - 1 + ' day ago';
+    event.target.textContent = progress.getUTCDate() - 1 + ' day' + (progress.getUTCDate() - 2 > 0 ? 's' : '') + ' ago';
   } else if (progress.getUTCHours()) {
-    event.target.textContent = progress.getUTCHours() + ' hour ago';
+    event.target.textContent = progress.getUTCHours() + ' hour' + (progress.getUTCHours() > 1 ? 's' : '') + ' ago';
   } else if (progress.getUTCMinutes()) {
-    event.target.textContent = progress.getUTCMinutes() + ' minute ago';
+    event.target.textContent = progress.getUTCMinutes() + ' minute' + (progress.getUTCMinutes() > 1 ? 's' : '') + ' ago';
   } else {
     event.target.textContent = 'Now';
   }
