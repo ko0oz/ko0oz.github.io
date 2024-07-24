@@ -1,0 +1,188 @@
+<html><head><base href="https://webcache.googleusercontent.com/search?q=cache:">
+<style>
+  body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+	text-align: center;
+    font-family: Arial, sans-serif;
+	background: black;
+	color: white;
+  }
+  .video-container {
+    display: flex;
+    justify-content: space-between;
+    height: calc(100vh - 100px);
+    width: 100vw;
+  }
+  .video-column {
+    height: 100%;
+    overflow: hidden;
+  }
+  iframe {
+    height: 100%;
+    border: none;
+  }
+  .controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  input, button, select {
+    padding: 5px;
+    font-size: 16px;
+  }
+  #playButton {
+    cursor: pointer;
+  }
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+  }
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #555;
+    transition: .4s;
+    border-radius: 34px;
+  }
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+  }
+  input:checked + .slider {
+  }
+  input:checked + .slider:before {
+    transform: translateX(26px);
+  }
+</style>
+</head>
+<body>
+<div id="videoContainer" class="video-container">
+  <!-- Videos will be dynamically inserted here -->
+</div>
+<div class="controls">
+<span>delay(ms)</span>
+  <input type="number" id="delayInput" value="100" min="0" step="100" placeholder="Delay (ms)">
+  <span>url</span>
+  <input type="text" id="videoUrlInput" value="https://www.youtube.com/watch?v=j3qMwnMtnhQ" placeholder="YouTube URL">
+  <span>columns</span>
+  <input type="number" id="videoCountInput" value="10" min="1" max="20" placeholder="Video count">
+    <span>individual</span>
+  <label class="switch">
+    <input type="checkbox" id="alignmentToggle">
+    <span class="slider"></span>
+  </label>
+  <span>assembled</span>
+  <button id="updateButton">update</button>
+  <button id="playButton">PLAY</button>
+</div>
+youtube videos realtime barcode player<br>YVRBP (why we are be pee?)<br>v1.0
+<script src="https://www.youtube.com/iframe_api"></script>
+<script>
+let players = [];
+let videoId = 'j3qMwnMtnhQ';
+let videoCount = 10;
+let delay = 100;
+let isAlignedMode = false;
+
+function onYouTubeIframeAPIReady() {
+  updateVideos();
+}
+
+function updateVideos() {
+  const container = document.getElementById('videoContainer');
+  container.innerHTML = '';
+  players = [];
+
+  for (let i = 0; i < videoCount; i++) {
+    const column = document.createElement('div');
+    column.className = 'video-column';
+    column.style.width = `${100 / videoCount}%`;
+
+    const iframe = document.createElement('iframe');
+    iframe.id = 'video' + i;
+    iframe.allow = 'autoplay';
+    iframe.frameBorder = '0';
+    iframe.src = `https://www.youtube.com/embed/${videoId}?enablejsapi=1&controls=0&showinfo=0&rel=0&loop=1&playlist=${videoId}`;
+
+    column.appendChild(iframe);
+    container.appendChild(column);
+
+    players[i] = new YT.Player('video' + i, {
+      events: {
+        'onReady': onPlayerReady,
+      }
+    });
+  }
+  updateAlignment();
+}
+
+function onPlayerReady(event) {
+  // Do nothing, wait for button click
+}
+
+function updateAlignment() {
+  const iframes = document.querySelectorAll('iframe');
+  iframes.forEach((iframe, index) => {
+    if (isAlignedMode) {
+      const offset = -index * (100 / videoCount);
+      iframe.style.width = `${videoCount * 100}%`;
+      iframe.style.transform = `translateX(${offset}%)`;
+    } else {
+      iframe.style.width = '1000px';
+      iframe.style.transform = 'translateX(-50%)';
+      iframe.style.left = '50%';
+      iframe.style.position = 'relative';
+    }
+  });
+}
+
+document.getElementById('playButton').addEventListener('click', function() {
+  for (let i = 0; i < players.length; i++) {
+    setTimeout(function() {
+      players[i].playVideo();
+    }, i * delay);
+  }
+});
+
+document.getElementById('updateButton').addEventListener('click', function() {
+  delay = parseInt(document.getElementById('delayInput').value);
+  const url = document.getElementById('videoUrlInput').value;
+  videoId = url.split('v=')[1] || url.split('/').pop();
+  videoCount = parseInt(document.getElementById('videoCountInput').value);
+  updateVideos();
+});
+
+document.getElementById('alignmentToggle').addEventListener('change', function() {
+  isAlignedMode = this.checked;
+  updateAlignment();
+});
+</script>
+</body>
+</html>
