@@ -8,7 +8,6 @@ img, picture, svg, video, canvas{
     background-size: cover;
     margin: 0;
     padding: 0;
-    display: block;
 }
 body, html{
     height: 100%;
