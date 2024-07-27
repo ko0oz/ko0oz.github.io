@@ -18,7 +18,7 @@ $(function() {
   const $seconds = $('#seconds');
 
   // Настройка стилей для контейнера часов
-  $clock.css({margin: '20px auto', width: '250px', height: '250px'});
+  $clock.css({margin: '20px auto'});
 
   // Настройка общих стилей для всех элементов с классом "number" (часы, минуты и секунды)
   $('.number').css({
@@ -29,16 +29,15 @@ $(function() {
     textAlign: 'center',
     lineHeight: '120px',
     transformOrigin: 'center',
-    fontWeight: 'bold',
-    color: 'white'
+    fontWeight: 'bold'
   });
 
   // Настройка цветов для каждого элемента (часов, минут и секунд)
-  /*
-  $hours.css({color: 'blue'});
-  $minutes.css({color: 'yellow'});
-  $seconds.css({color: 'red'});
-  */
+
+  $hours.css({color: 'white'});
+  $minutes.css({color: 'white'});
+  $seconds.css({color: 'white'});
+
 
   // Функция для обновления значений часов, минут и секунд на основе текущего времени
   function updateClock() {
