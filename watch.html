@@ -1,26 +1,19 @@
 <html>
 <body>
-<!-- Создание контейнера для цифровых часов -->
-<div id="clock" style="width:450px;height:450px;border-radius:50%;border:3px solid #AAAAAA;position:relative;"></div>
-
-<!-- Создание элементов для отображения часов, минут и секунд -->
-<div id="hours" class="number">12</div>
-<div id="minutes" class="number">60</div>
-<div id="seconds" class="number">60</div>
+<div id="clock" style="width:450px;height:450px;border-radius:50%;border:3px solid #AAAAAA;position:relative;">
+  <div id="hours" class="number">12</div>
+  <div id="minutes" class="number">60</div>
+  <div id="seconds" class="number">60</div>
+</div>
 
 <script>
-// Использование jQuery для выполнения кода после загрузки документа
 $(function() {
-  // Получение ссылок на элементы страницы по их идентификаторам
   const $clock = $('#clock');
   const $hours = $('#hours');
   const $minutes = $('#minutes');
   const $seconds = $('#seconds');
 
-  // Настройка стилей для контейнера часов
   $clock.css({margin: '20px auto'});
-
-  // Настройка общих стилей для всех элементов с классом "number" (часы, минуты и секунды)
   $('.number').css({
     position: 'absolute',
     width: '120px',
@@ -32,33 +25,23 @@ $(function() {
     fontWeight: 'bold'
   });
 
-  // Настройка цветов для каждого элемента (часов, минут и секунд)
-  $hours.css({color: 'blue'});
-  $minutes.css({color: 'yellow'});
-  $seconds.css({color: 'red'});
-
-  // Функция для обновления значений часов, минут и секунд на основе текущего времени
   function updateClock() {
     const now = new Date();
     const hours = now.getHours() % 12;
     const minutes = now.getMinutes();
     const seconds = now.getSeconds();
 
-    // Обновление текста внутри элементов с новыми значениями часов, минут и секунд
     $hours.text(hours === 0 ? 12 : hours);
     $minutes.text(minutes);
     $seconds.text(seconds);
 
-    // Определение центра контейнера часов и радиуса для стрелок часов
     const clockCenter = 225;
     const radius = 180;
 
-    // Вспомогательная функция для позиционирования элемента на основе угла поворота
     function positionElement($element, angle) {
       const radian = (angle - 90) * Math.PI / 180;
       const x = clockCenter + radius * Math.cos(radian);
       const y = clockCenter + radius * Math.sin(radian);
-      // Настройка стилей элемента для установки его позиции и угла поворота
       $element.css({
         left: `${x - 60}px`,
         top: `${y - 60}px`,
@@ -66,16 +49,12 @@ $(function() {
       });
     }
 
-    // Позиционирование стрелок часов на основе текущего времени
     positionElement($hours, hours * 30 + minutes / 2);
     positionElement($minutes, minutes * 6);
     positionElement($seconds, seconds * 6);
   }
 
-  // Обновление часов каждую секунду с помощью setInterval()
   setInterval(updateClock, 1000);
-
-  // Вызов функции updateClock() для отображения текущего времени немедленно после загрузки страницы
   updateClock();
 });
 </script>
