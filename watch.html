@@ -13,16 +13,20 @@ $(function() {
   const $minutes = $('#minutes');
   const $seconds = $('#seconds');
 
-  $clock.css({margin: '20px auto'});
+  $clock.css({
+    margin: '20px auto',
+    width: '250px',
+    height: '250px',
+    border: '1px solid #FFF'
+});
   $('.number').css({
     position: 'absolute',
     width: '120px',
     height: '120px',
-    fontSize: '84px',
+    fontSize: '24px',
     textAlign: 'center',
     lineHeight: '120px',
     transformOrigin: 'center',
-    fontWeight: 'bold'
   });
 
   function updateClock() {
