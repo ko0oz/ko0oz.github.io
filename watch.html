@@ -1,11 +1,17 @@
 <html>
 <body>
+    <!-- <style>
+        body {
+            background-color: black;
+            color: white;
+        }
+    </style>  -->
 <div id="clock" style="width:450px;height:450px;border-radius:50%;border:3px solid #AAAAAA;position:relative;">
   <div id="hours" class="number">12</div>
   <div id="minutes" class="number">60</div>
   <div id="seconds" class="number">60</div>
 </div>
-
+<!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
 <script>
 $(function() {
   const $clock = $('#clock');
@@ -15,17 +21,17 @@ $(function() {
 
   $clock.css({
     margin: '20px auto',
-    width: '250px',
-    height: '250px',
+    width: '200px',
+    height: '200px',
     border: '1px solid #FFF'
 });
   $('.number').css({
     position: 'absolute',
-    width: '120px',
-    height: '120px',
+    width: '50px',
+    height: '50px',
     fontSize: '24px',
     textAlign: 'center',
-    lineHeight: '120px',
+    lineHeight: '50px',
     transformOrigin: 'center',
   });
 
@@ -39,23 +45,22 @@ $(function() {
     $minutes.text(minutes);
     $seconds.text(seconds);
 
-    const clockCenter = 225;
-    const radius = 180;
+    const clockCenter = 100;
+    const radius = 90;
 
-    function positionElement($element, angle) {
-      const radian = (angle - 90) * Math.PI / 180;
-      const x = clockCenter + radius * Math.cos(radian);
-      const y = clockCenter + radius * Math.sin(radian);
-      $element.css({
-        left: `${x - 60}px`,
-        top: `${y - 60}px`,
+    function positionElement($element, angle, radius) {
+    const radian = (angle - 90) * Math.PI / 180;
+    const x = clockCenter + radius * Math.cos(radian);
+    const y = clockCenter + radius * Math.sin(radian);
+    $element.css({
+        left: `${x - 25}px`,
+        top: `${y - 25}px`,
         transform: `rotate(${angle}deg)`
-      });
+    });
     }
-
-    positionElement($hours, hours * 30 + minutes / 2);
-    positionElement($minutes, minutes * 6);
-    positionElement($seconds, seconds * 6);
+    positionElement($hours, hours * 30 + minutes / 2, radius - 48); // Для часовой стрелки
+positionElement($minutes, minutes * 6, radius - 24); // Для минутной стрелки
+positionElement($seconds, seconds * 6, radius - 1); // Для секундной стрелки (не изменяется)
   }
 
   setInterval(updateClock, 1000);
