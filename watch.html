@@ -18,7 +18,7 @@ $(function() {
   const $seconds = $('#seconds');
 
   // Настройка стилей для контейнера часов
-  $clock.css({margin: '20px auto'});
+  $clock.css({margin: '20px auto', width: '250px', height: '250px'});
 
   // Настройка общих стилей для всех элементов с классом "number" (часы, минуты и секунды)
   $('.number').css({
@@ -29,7 +29,8 @@ $(function() {
     textAlign: 'center',
     lineHeight: '120px',
     transformOrigin: 'center',
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    color: 'white'
   });
 
   // Настройка цветов для каждого элемента (часов, минут и секунд)
