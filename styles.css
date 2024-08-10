@@ -4,7 +4,6 @@ img, picture, svg, video, canvas{
     max-width: 100%;
     height: auto; 
     vertical-align: middle;
-    text-align: left;
     background-repeat: no-repeat; 
     background-size: cover;
     margin: 0;
@@ -13,6 +12,7 @@ img, picture, svg, video, canvas{
 body, html{
     height: 100%;
     font-family: arial;
+    text-align: left;
 }
 a {
 	font-family: arial;
