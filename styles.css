@@ -16,12 +16,13 @@ body, html{
 }
 a {
 	font-family: times;
+	color: #0226ff;
 	}
 body {
     background-color: white;
     color: black;
     text-align: center;
-    font-size: 16px;
+    font-size: 24px;
     margin: 0;
     padding: 0;
 }
@@ -29,7 +30,7 @@ body {
     background: none;
     border: none;
     cursor: pointer;
-    color: red;
+    color: #0226ff;
     font-family: times;
     padding: 0px 0px;
     margin: 0 0px;
