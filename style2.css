@@ -1,0 +1,80 @@
+/* @charset "UTF-8"; */
+
+img, picture, svg, video, canvas{
+    max-width: 100%;
+    height: auto; 
+    vertical-align: middle;
+    background-repeat: no-repeat; 
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+}
+body, html{
+    height: 100%;
+    font-family: times;
+    text-align: center;
+}
+a {
+	font-family: times;
+	color: #0226ff;
+	}
+body {
+    background-color: white;
+    color: black;
+    text-align: center;
+    font-size: 24px;
+    margin: 0;
+    padding: 0;
+}
+#site-description .filter-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #0226ff;
+    font-family: times;
+    padding: 0px 0px;
+    margin: 0 0px;
+    text-decoration: underline;
+    text-align: left;
+}
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 0px;
+    padding-top: 0;
+    justify-content: start;
+}
+.grid-item {
+    padding: 0px;
+    text-align: center;
+}
+.grid-item img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+/*
+.archive-table {
+}
+*/
+@media all and (max-width: 600px) {
+	.grid-container {
+	    display: grid;
+	    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+	    gap: 0px;
+	    padding-top: 0;
+	    justify-content: start;
+	}
+}
+/*
+.project-container {
+	max-width: 100%;
+	height: auto;
+    justify-content: center;
+    align-items: center;
+}
+.project-container img {
+    max-width: 100%;
+    height: auto;
+}
+*/

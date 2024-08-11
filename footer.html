@@ -5,11 +5,25 @@
         });
     </script>
 <body>
-<br>
+<br><br>
 Last update: <time id="lastModified"></time>.<br>
 All text and images © Andrew Kuzmin.<br>
-<script src="/time.js"></script>
+<script src="/time.js"></script><br>
 <!-- <div id="includeHtml3"></div> -->
 <!-- <img src="/12.png"> <img src="/sun.png"> -->
+<button onclick="switchStyle('style1.css')">dark</button>
+<button onclick="switchStyle('style2.css')">light</button>
+<script>
+    function switchStyle(style) {
+        document.getElementById('style-link').href = style;
+        localStorage.setItem('selectedStyle', style);
+    }
+
+    // Проверяем, если выбран стиль сохранен в Local Storage, применяем его
+    const selectedStyle = localStorage.getItem('selectedStyle');
+    if (selectedStyle) {
+        document.getElementById('style-link').href = selectedStyle;
+    }
+</script>
 </body>
 </html>

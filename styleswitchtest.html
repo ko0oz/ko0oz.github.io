@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Switch CSS Styles</title>
+    <link id="style-link" rel="stylesheet" href="style1.css">
+</head>
+<body>
+    <h1>Hello, World!</h1>
+    <button onclick="switchStyle('style1.css')">Style 1</button>
+    <button onclick="switchStyle('style2.css')">Style 2</button>
+    <button onclick="switchStyle('style3.css')">Style 3</button>
+
+    <script>
+        function switchStyle(style) {
+            document.getElementById('style-link').href = style;
+            localStorage.setItem('selectedStyle', style);
+        }
+
+        // Проверяем, если выбран стиль сохранен в Local Storage, применяем его
+        const selectedStyle = localStorage.getItem('selectedStyle');
+        if (selectedStyle) {
+            document.getElementById('style-link').href = selectedStyle;
+        }
+    </script>
+</body>
+</html>
