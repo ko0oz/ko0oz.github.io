@@ -1,4 +1,4 @@
-// ---------------- ебенячий код переключателя стилей
+/*
 document.addEventListener("DOMContentLoaded", function() {
 const style1Btn = document.getElementById('style1');
 const style2Btn = document.getElementById('style2');
@@ -41,3 +41,4 @@ switch (style) {
 localStorage.setItem('selectedStyle', style); // Save the selected style to localStorage
 }
 });
+*/
