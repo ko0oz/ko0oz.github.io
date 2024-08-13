@@ -11,19 +11,9 @@ All text and images © Andrew Kuzmin.<br>
 <script src="/time.js"></script>
 <!-- <div id="includeHtml3"></div> -->
 <!-- <img src="/12.png"> <img src="/sun.png"> -->
-<button onclick="switchStyle('style1.css')">dark</button>
-<button onclick="switchStyle('style2.css')">light</button>
-<script>
-    function switchStyle(style) {
-        document.getElementById('style-link').href = style;
-        localStorage.setItem('selectedStyle', style);
-    }
-
-    // Проверяем, если выбран стиль сохранен в Local Storage, применяем его
-    const selectedStyle = localStorage.getItem('selectedStyle');
-    if (selectedStyle) {
-        document.getElementById('style-link').href = selectedStyle;
-    }
-</script>
+<br>
+<button id="style1">Стиль 1</button>
+<button id="style2">Стиль 2</button>
+<br>
 </body>
 </html>
