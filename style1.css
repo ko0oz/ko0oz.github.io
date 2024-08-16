@@ -11,13 +11,16 @@ img, picture, svg, video, canvas{
 }
 body, html{
     height: 100%;
-    font-family: times;
+    font-family: arial;
     text-align: center;
 }
 a {
-	font-family: times;
+	font-family: arial;
 	color: #173aff;
 	}
+a:visited {
+    color: #8948c4;
+    }
 body {
     background-color: black;
     color: white;
@@ -31,7 +34,7 @@ body {
     border: none;
     cursor: pointer;
     color: #173aff;
-    font-family: times;
+    font-family: arial;
     font-size: 24px;
     padding: 0px 0px;
     margin: 0 0px;
