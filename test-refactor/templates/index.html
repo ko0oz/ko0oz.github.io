@@ -29,7 +29,6 @@
     <a class="filter-btn" href="index.html?tag=3d">3d</a>,
     <a class="filter-btn" href="index.html?tag=ai">ai</a>,
     <a class="filter-btn" href="index.html?tag=founder">founder</a>.
-    <br><br>
 </div>
 <div class="grid-container">
 {{PROJECTS_HTML}}
@@ -185,25 +184,6 @@
     lastModif.textContent = new Date(document.lastModified).toLocaleString('en-US', options);
     lastModif.setAttribute("data-time", document.lastModified);
 
-    lastModif.addEventListener('click', function (event) {
-        let ago = new Date(document.lastModified);
-        let diff = new Date().getTime() - ago.getTime();
-        let progress = new Date(diff);
-        
-        if (progress.getUTCFullYear() - 1970) {
-            event.target.textContent = progress.getUTCFullYear() - 1970 + ' year' + (progress.getUTCFullYear() - 1971 > -1 ? 's' : '') + ' ago';
-        } else if (progress.getUTCMonth()) {
-            event.target.textContent = progress.getUTCMonth() + ' month' + (progress.getUTCMonth() > 1 ? 's' : '') + ' ago';
-        } else if (progress.getUTCDate() - 1) {
-            event.target.textContent = progress.getUTCDate() - 1 + ' day' + (progress.getUTCDate() - 2 > 0 ? 's' : '') + ' ago';
-        } else if (progress.getUTCHours()) {
-            event.target.textContent = progress.getUTCHours() + ' hour' + (progress.getUTCHours() > 1 ? 's' : '') + ' ago';
-        } else if (progress.getUTCMinutes()) {
-            event.target.textContent = progress.getUTCMinutes() + ' minute' + (progress.getUTCMinutes() > 1 ? 's' : '') + ' ago';
-        } else {
-            event.target.textContent = 'Now';
-        }
-    });
 </script>
 </body>
 <!--

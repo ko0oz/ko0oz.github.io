@@ -16,9 +16,8 @@
 <div id="site-description">
     Masa Madre<br>
     <a href="../index.html?tag=3d">3d</a>, <a href="../index.html?tag=visualization">visualization</a><br>
-    03/2024<br><br>
+    03/2024
 </div>
-
 <!-- PROJECT CONTENT -->
 <p><img src="images/36.png" alt=""></p>
 <p>The present (Gegenwart) is always twofold: a temporal state and what is currently, spatially present to us. The present finds its expression here and now. It refuses accessibility, because in the moment of reflection the present withdraws and momentarily becomes the past. Therefore, it can only be viewed reflexively and retrospectively. Only in hindsight and through the process of historicizing, it becomes clear what the present was all about, what defined this particular present – and the possibilities of its potential for the future. (っ^‿^)っ It is in the present, where change begins.</p>
@@ -26,13 +25,15 @@
 <p><img src="images/47.png" alt=""></p>
 
 
+<!-- NAVIGATION -->
+<div class="nav-container"><a href="thiswasneverexisted.html" class="nav-btn nav-next">← thiswasneverexisted</a><a href="halsa.html" class="nav-btn nav-prev">Halsa →</a></div>
+
 <div id="site-description">
-    <br>
     Background: <button class="ui-btn" id="themeToggle">black</button> / <button class="ui-btn" id="themeToggle2">white</button><br>
     Font: <button class="ui-btn" id="fontToggle">serif</button> / <button class="ui-btn" id="fontToggle2">sans</button><br>
     Accent color: <input type="color" id="accentColor" value="#0000FF" class="color-input"><br>
     Last update: <time id="lastModified"></time>.<br>
-    All rights reserved © <a href="index.html">Andrew Kuzmin</a>.<br>
+    All rights reserved © <a href="../index.html">Andrew Kuzmin</a>.<br>
 </div>
 <script>
     // UI Customization
@@ -149,25 +150,6 @@
     lastModif.textContent = new Date(document.lastModified).toLocaleString('en-US', options);
     lastModif.setAttribute("data-time", document.lastModified);
 
-    lastModif.addEventListener('click', function (event) {
-        let ago = new Date(document.lastModified);
-        let diff = new Date().getTime() - ago.getTime();
-        let progress = new Date(diff);
-        
-        if (progress.getUTCFullYear() - 1970) {
-            event.target.textContent = progress.getUTCFullYear() - 1970 + ' year' + (progress.getUTCFullYear() - 1971 > -1 ? 's' : '') + ' ago';
-        } else if (progress.getUTCMonth()) {
-            event.target.textContent = progress.getUTCMonth() + ' month' + (progress.getUTCMonth() > 1 ? 's' : '') + ' ago';
-        } else if (progress.getUTCDate() - 1) {
-            event.target.textContent = progress.getUTCDate() - 1 + ' day' + (progress.getUTCDate() - 2 > 0 ? 's' : '') + ' ago';
-        } else if (progress.getUTCHours()) {
-            event.target.textContent = progress.getUTCHours() + ' hour' + (progress.getUTCHours() > 1 ? 's' : '') + ' ago';
-        } else if (progress.getUTCMinutes()) {
-            event.target.textContent = progress.getUTCMinutes() + ' minute' + (progress.getUTCMinutes() > 1 ? 's' : '') + ' ago';
-        } else {
-            event.target.textContent = 'Now';
-        }
-    });
 </script>
 </body>
 </html>

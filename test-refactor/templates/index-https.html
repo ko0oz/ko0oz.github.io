@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<!--
+
+         ( ͡° ͜ʖ ͡°)
+         GREETINGS
+
+-->
+<html>
+<head>
+    <title>Andrew Kuzmin</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <meta name="description" content="Andrew Kuzmin - Multidisciplinary designer and artist">
+    <script>
+        // Redirect to HTTPS
+        if (location.protocol !== 'https:') {
+            location.replace('https:' + window.location.href.substring(window.location.protocol.length));
+        }
+    </script>
+</head>
+<body>
+{{HEADER}}
+<div id="site-description">
+    Multidisciplinary self-taught designer and artist with 10+ years of experience. Mostly I do branding, packaging, 3D & AI, motion design, typography and web.
+    Had deal with: Fuck You Digital, GUNNA, Kinopoisk, Lena Kuka, Labelcom, Omsky Studio, Raiffesien Bank, Samokat, Sber, Shuka Design, Tinkoff Bank, Yandex.
+    Job experience: BBDO Branding (Creative Director, 2021—2024), Redday (Art Director, 2018—2021), Logomachine (Graphic Designer, 2014—2016). Contact: <a href="mailto: kooozmeeen@gmail.com">kooozmeeen@gmail.com</a>, <a href="https://www.instagram.com/ko0oz">Instagram</a>, <a href="https://www.behance.net/koozmeen">Bēhance</a>, <a href="https://t.me/koozmeen">Telegram</a>.
+    <br><br>
+    Projects:
+    <a class="filter-btn" href="index.html">all</a>,
+    <a class="filter-btn" href="index.html?tag=design">design</a>,
+    <a class="filter-btn" href="index.html?tag=visualization">visualization</a>,
+    <a class="filter-btn" href="index.html?tag=art">art</a>,
+    <a class="filter-btn" href="index.html?tag=3d">3d</a>,
+    <a class="filter-btn" href="index.html?tag=ai">ai</a>,
+    <a class="filter-btn" href="index.html?tag=founder">founder</a>.
+</div>
+<div class="grid-container">
+{{PROJECTS_HTML}}
+</div>
+{{FOOTER}}
+<script>
+    // Фильтрация проектов
+    const siteDescription = document.getElementById('site-description');
+    const mainContent = document.querySelector('.grid-container');
+    const gridItems = document.querySelectorAll('.grid-item');
+     
+    // Get tag from URL parameter
+    const urlParams = new URLSearchParams(window.location.search);
+    const selectedTag = urlParams.get('tag') || 'all';
+    
+    // Apply filtering based on the selected tag
+    gridItems.forEach(item =>{
+        if (selectedTag === 'all') {
+            item.style.display = 'block';
+        } else {
+            // Check if project has the selected tag
+            const projectTags = item.getAttribute('data-tags');
+            if (projectTags && projectTags.split(',').includes(selectedTag)) {
+                item.style.display = 'block';
+            } else {
+                item.style.display = 'none';
+            }
+        }
+    });
+    
+    // Highlight active filter
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    filterBtns.forEach(btn => {
+        btn.classList.remove('active');
+        const href = btn.getAttribute('href');
+        if ((selectedTag === 'all' && href === 'index.html') || 
+            (selectedTag !== 'all' && href === `index.html?tag=${selectedTag}`)) {
+            btn.classList.add('active');
+        }
+    });
+
+    // UI Customization
+    const themeToggle = document.getElementById('themeToggle');
+    const themeToggle2 = document.getElementById('themeToggle2');
+    const fontToggle = document.getElementById('fontToggle');
+    const fontToggle2 = document.getElementById('fontToggle2');
+    const accentColor = document.getElementById('accentColor');
+    
+    // Load saved settings
+    const savedTheme = localStorage.getItem('portfolioTheme') || 'white';
+    const savedFont = localStorage.getItem('portfolioFont') || 'serif';
+    const savedAccentColor = localStorage.getItem('portfolioAccentColor') || '#0000FF';
+    
+    // Apply saved settings
+    applyTheme(savedTheme);
+    applyFont(savedFont);
+    applyAccentColor(savedAccentColor);
+    
+    // Theme toggle
+    themeToggle.addEventListener('click', () => {
+        applyTheme('black');
+        localStorage.setItem('portfolioTheme', 'black');
+        updateActiveButtons();
+    });
+    
+    themeToggle2.addEventListener('click', () => {
+        applyTheme('white');
+        localStorage.setItem('portfolioTheme', 'white');
+        updateActiveButtons();
+    });
+    
+    // Font toggle
+    fontToggle.addEventListener('click', () => {
+        applyFont('serif');
+        localStorage.setItem('portfolioFont', 'serif');
+        updateActiveButtons();
+    });
+    
+    fontToggle2.addEventListener('click', () => {
+        applyFont('sans');
+        localStorage.setItem('portfolioFont', 'sans');
+        updateActiveButtons();
+    });
+    
+    // Accent color
+    accentColor.addEventListener('change', (e) => {
+        applyAccentColor(e.target.value);
+        localStorage.setItem('portfolioAccentColor', e.target.value);
+    });
+    
+    function applyTheme(theme) {
+        if (theme === 'black') {
+            document.documentElement.style.setProperty('--bg-color', 'black');
+            document.documentElement.style.setProperty('--text-color', 'white');
+        } else {
+            document.documentElement.style.setProperty('--bg-color', 'white');
+            document.documentElement.style.setProperty('--text-color', 'black');
+        }
+    }
+    
+    function applyFont(font) {
+        if (font === 'serif') {
+            document.documentElement.style.setProperty('--font-family', 'times');
+        } else {
+            document.documentElement.style.setProperty('--font-family', 'arial');
+        }
+    }
+    
+    function applyAccentColor(color) {
+        document.documentElement.style.setProperty('--accent-color', color);
+        const links = document.querySelectorAll('a, .filter-btn, .ui-btn');
+        links.forEach(link => {
+            link.style.color = color;
+        });
+        accentColor.value = color;
+    }
+    
+    function updateActiveButtons() {
+        // Reset all buttons
+        document.querySelectorAll('.ui-btn').forEach(btn => btn.classList.remove('active'));
+        
+        // Set active theme button
+        if (localStorage.getItem('portfolioTheme') === 'black') {
+            themeToggle.classList.add('active');
+        } else {
+            themeToggle2.classList.add('active');
+        }
+        
+        // Set active font button
+        if (localStorage.getItem('portfolioFont') === 'serif') {
+            fontToggle.classList.add('active');
+        } else {
+            fontToggle2.classList.add('active');
+        }
+    }
+    
+    // Initialize active buttons
+    updateActiveButtons();
+
+    // Обновление времени последнего изменения
+    const lastModif = document.querySelector('#lastModified');
+    const options = { 
+        year: 'numeric', 
+        month: 'long', 
+        day: 'numeric', 
+        weekday: 'long', 
+        hour: '2-digit', 
+        minute: '2-digit', 
+        second: '2-digit', 
+        timeZoneName: 'short', 
+        hour12: false
+    };
+    lastModif.textContent = new Date(document.lastModified).toLocaleString('en-US', options);
+    lastModif.setAttribute("data-time", document.lastModified);
+
+</script>
+</body>
+<!--
+
+        ヽ༼^ຈ_ຈ^༽ﾉ
+          BYE-BYE
+
+-->
+</html>

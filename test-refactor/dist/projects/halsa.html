@@ -16,20 +16,21 @@
 <div id="site-description">
     Halsa<br>
     <a href="../index.html?tag=3d">3d</a>, <a href="../index.html?tag=visualization">visualization</a><br>
-    09/2023<br><br>
+    09/2023
 </div>
-
 <!-- PROJECT CONTENT -->
-<p><img src="halsa/1.jpg" alt=""><br>Case visuals. Designed by <a href="https://shuka.design/">Shuka Design</a>.<br>Halsa is a subscription service that delivers customized vitamin sets, using an AI algorithm to personalize nutrients based on online test results. Its rebranding enhances its presence in the E-commerce 2.0 market with a unified visual language, emphasizing self-care and healthy living. The brand&#39;s design combines a modular, two-cube packaging system for easy vitamin regimen management with functional typography, a distinct green color, and illustrations by Stepan Lipatov, Rodion Kitaev, and Alisa Gvozdeva. These elements represent the &quot;Health Constructor&quot; concept, highlighting Halsa&#39;s commitment to wellness, flexibility, and expert guidance in health.<br><img src="halsa/2.jpg" alt=""><br><img src="halsa/3.jpg" alt=""><br><img src="halsa/4.jpg" alt=""><br><img src="halsa/5.jpg" alt=""><br><img src="halsa/6.png" alt=""><br><img src="halsa/7.jpg" alt=""><br><img src="halsa/8.jpg" alt=""><br><img src="halsa/9.jpg" alt=""></p>
+<p><img src="halsa/1.jpg" alt=""><br>Case visuals. Designed by <a href="https://shuka.design/">Shuka Design</a>.<br>Halsa is a subscription service that delivers customized vitamin sets, using an AI algorithm to personalize nutrients based on online test results. Its rebranding enhances its presence in the E-commerce 2.0 market with a unified visual language, emphasizing self-care and healthy living. The brand&#39;s design combines a modular, two-cube packaging system for easy vitamin regimen management with functional typography, a distinct green color, and illustrations by Stepan Lipatov, Rodion Kitaev, and Alisa Gvozdeva. These elements represent the &quot;Health Constructor&quot; concept, highlighting Halsa&#39;s commitment to wellness, flexibility, and expert guidance in health.<br><video width="1400" autoplay loop muted playsinline><source src="halsa/v1.mp4" type="video/mp4">SOMETHING WRONG WITH VIDEO ¯\_(ツ)_/¯.</video><br><img src="halsa/2.jpg" alt=""><br><img src="halsa/3.jpg" alt=""><br><video width="1400" autoplay loop muted playsinline><source src="halsa/h5-04_1.mp4" type="video/mp4">SOMETHING WRONG WITH VIDEO ¯\_(ツ)_/¯.</video><br><img src="halsa/4.jpg" alt=""><br><video width="1400" autoplay loop muted playsinline><source src="halsa/h8-08b.mp4" type="video/mp4">SOMETHING WRONG WITH VIDEO ¯\_(ツ)_/¯.</video><br><img src="halsa/5.jpg" alt=""><br><video width="1400" autoplay loop muted playsinline><source src="halsa/h9-04.mp4" type="video/mp4">SOMETHING WRONG WITH VIDEO ¯\_(ツ)_/¯.</video><br><video width="1400" autoplay loop muted playsinline><source src="halsa/h4-03.mp4" type="video/mp4">SOMETHING WRONG WITH VIDEO ¯\_(ツ)_/¯.</video><br><img src="halsa/6.png" alt=""><br><img src="halsa/7.jpg" alt=""><br><img src="halsa/10.jpg" alt=""><br><img src="halsa/8.jpg" alt=""><br><img src="halsa/9.jpg" alt=""><br><video width="1400" autoplay loop muted playsinline><source src="halsa/h16-04.mp4" type="video/mp4">SOMETHING WRONG WITH VIDEO ¯\_(ツ)_/¯.</video></p>
 
+
+<!-- NAVIGATION -->
+<div class="nav-container"><a href="masa_madre.html" class="nav-btn nav-next">← Masa Madre</a><div></div></div>
 
 <div id="site-description">
-    <br>
     Background: <button class="ui-btn" id="themeToggle">black</button> / <button class="ui-btn" id="themeToggle2">white</button><br>
     Font: <button class="ui-btn" id="fontToggle">serif</button> / <button class="ui-btn" id="fontToggle2">sans</button><br>
     Accent color: <input type="color" id="accentColor" value="#0000FF" class="color-input"><br>
     Last update: <time id="lastModified"></time>.<br>
-    All rights reserved © <a href="index.html">Andrew Kuzmin</a>.<br>
+    All rights reserved © <a href="../index.html">Andrew Kuzmin</a>.<br>
 </div>
 <script>
     // UI Customization
@@ -146,25 +147,6 @@
     lastModif.textContent = new Date(document.lastModified).toLocaleString('en-US', options);
     lastModif.setAttribute("data-time", document.lastModified);
 
-    lastModif.addEventListener('click', function (event) {
-        let ago = new Date(document.lastModified);
-        let diff = new Date().getTime() - ago.getTime();
-        let progress = new Date(diff);
-        
-        if (progress.getUTCFullYear() - 1970) {
-            event.target.textContent = progress.getUTCFullYear() - 1970 + ' year' + (progress.getUTCFullYear() - 1971 > -1 ? 's' : '') + ' ago';
-        } else if (progress.getUTCMonth()) {
-            event.target.textContent = progress.getUTCMonth() + ' month' + (progress.getUTCMonth() > 1 ? 's' : '') + ' ago';
-        } else if (progress.getUTCDate() - 1) {
-            event.target.textContent = progress.getUTCDate() - 1 + ' day' + (progress.getUTCDate() - 2 > 0 ? 's' : '') + ' ago';
-        } else if (progress.getUTCHours()) {
-            event.target.textContent = progress.getUTCHours() + ' hour' + (progress.getUTCHours() > 1 ? 's' : '') + ' ago';
-        } else if (progress.getUTCMinutes()) {
-            event.target.textContent = progress.getUTCMinutes() + ' minute' + (progress.getUTCMinutes() > 1 ? 's' : '') + ' ago';
-        } else {
-            event.target.textContent = 'Now';
-        }
-    });
 </script>
 </body>
 </html>

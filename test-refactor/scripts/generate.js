@@ -18,10 +18,10 @@ if (!fs.existsSync(config.outputDir)) {
 
 // Копируем статические файлы
 function copyStaticFiles() {
-  const staticFiles = ['images', 'favicon.ico', 'fav.png', 'fav2.ico', 'fav2.png', 'fav3.png', 'fav4.ico'];
+  const staticFiles = ['images', 'projects', 'favicon.ico', 'fav.png', 'fav2.ico', 'fav2.png', 'fav3.png', 'fav4.ico'];
   
   staticFiles.forEach(file => {
-    const srcPath = path.join('..', file);
+    const srcPath = path.join('.', file);
     const destPath = path.join(config.outputDir, file);
     
     if (fs.existsSync(srcPath)) {
@@ -94,6 +94,28 @@ function formatDate(project) {
   return `${month}/${year}`;
 }
 
+// Проверяем существование файлов в контенте
+function checkMissingFiles(content, projectId) {
+  const fileRegex = /!\[([^\]]*)\]\(([^)]+)\)/g;
+  let match;
+  const missingFiles = [];
+  
+  while ((match = fileRegex.exec(content)) !== null) {
+    const filePath = match[2];
+    const fullPath = path.join('.', 'projects', projectId, filePath);
+    
+    if (!fs.existsSync(fullPath)) {
+      missingFiles.push(filePath);
+    }
+  }
+  
+  if (missingFiles.length > 0) {
+    console.log(`⚠️  SOMETHING WRONG WITH FILES IN PROJECT ${projectId.toUpperCase()} (╯°□°）╯︵ ┻━┻:`, missingFiles);
+  }
+  
+  return missingFiles;
+}
+
 // Читаем части страниц
 function readPartials(isProjectPage = false) {
   const headerFile = isProjectPage ? 'header-project.html' : 'header.html';
@@ -132,7 +154,7 @@ function generateIndex(projects) {
     .replace('{{TOTAL_PROJECTS}}', projects.length);
   
   fs.writeFileSync(path.join(config.outputDir, 'index.html'), html);
-  console.log('✅ Generated index.html');
+  console.log('✅ GENERATED INDEX.HTML - MAIN PAGE IS READY (◕‿◕)');
 }
 
 // Генерируем страницы проектов
@@ -147,17 +169,32 @@ function generateProjectPages(projects) {
   // Генерируем только проекты с контентом
   const projectsWithContent = projects.filter(project => project.hasContent);
   
-  projectsWithContent.forEach(project => {
-    // Настраиваем marked для правильной обработки изображений
+  projectsWithContent.forEach((project, index) => {
+    // Определяем следующий и предыдущий проекты
+    const nextProject = index > 0 ? projectsWithContent[index - 1] : null; // Более новый (выше в списке)
+    const prevProject = index < projectsWithContent.length - 1 ? projectsWithContent[index + 1] : null; // Более старый (ниже в списке)
+    
+    // Настраиваем marked для правильной обработки изображений и видео
     const renderer = new marked.Renderer();
     renderer.image = function(href, title, text) {
-      return `<img src="${href}" alt="${text}">`;
+      // Проверяем, является ли файл видео
+      const videoExtensions = ['.mp4', '.webm', '.ogg', '.mov', '.avi'];
+      const isVideo = videoExtensions.some(ext => href.toLowerCase().endsWith(ext));
+      
+      if (isVideo) {
+        return `<video width="1400" autoplay loop muted playsinline><source src="${href}" type="video/mp4">SOMETHING WRONG WITH VIDEO ¯\\_(ツ)_/¯.</video>`;
+      } else {
+        return `<img src="${href}" alt="${text}">`;
+      }
     };
     
     marked.setOptions({
       renderer: renderer,
       breaks: true
     });
+    
+    // Проверяем отсутствующие файлы
+    checkMissingFiles(project.content, project.id);
     
     // Исправляем синтаксис изображений в Markdown
     const fixedContent = project.content.replace(/!\[([^\]]*)\]/g, '![]($1)');
@@ -174,6 +211,20 @@ function generateProjectPages(projects) {
 
     const formattedDate = formatDate(project);
     
+    // Создаем навигацию
+    let navigation = '<div class="nav-container">';
+    if (nextProject) {
+      navigation += `<a href="${nextProject.id}.html" class="nav-btn nav-next">← ${nextProject.title}</a>`;
+    } else {
+      navigation += '<div></div>'; // Пустой div для выравнивания
+    }
+    if (prevProject) {
+      navigation += `<a href="${prevProject.id}.html" class="nav-btn nav-prev">${prevProject.title} →</a>`;
+    } else {
+      navigation += '<div></div>'; // Пустой div для выравнивания
+    }
+    navigation += '</div>';
+    
     const html = projectTemplate
       .replace('{{HEADER}}', header)
       .replace('{{FOOTER}}', footer)
@@ -182,11 +233,12 @@ function generateProjectPages(projects) {
       .replace(/{{TAGS_LINKS}}/g, tagsLinks)
       .replace(/{{YEAR}}/g, formattedDate)
       .replace(/{{MAIN_IMAGE}}/g, imagePath)
-      .replace(/{{CONTENT}}/g, contentHTML);
+      .replace(/{{CONTENT}}/g, contentHTML)
+      .replace(/{{NAVIGATION}}/g, navigation);
     
     const outputPath = path.join(config.outputDir, 'projects', `${project.id}.html`);
     fs.writeFileSync(outputPath, html);
-    console.log(`✅ Generated projects/${project.id}.html`);
+    console.log(`✅ GENERATED PROJECTS/${project.id.toUpperCase()}.HTML - ANOTHER PAGE DONE (｡◕‿◕｡)`);
   });
 }
 
@@ -194,26 +246,26 @@ function generateProjectPages(projects) {
 function generateCSS() {
   const css = fs.readFileSync(path.join(config.templatesDir, 'styles.css'), 'utf8');
   fs.writeFileSync(path.join(config.outputDir, 'styles.css'), css);
-  console.log('✅ Generated styles.css');
+  console.log('✅ GENERATED STYLES.CSS - LOOKING GOOD (◡ ‿ ◡)');
 }
 
 // Основная функция
 function build() {
-  console.log('🚀 Building portfolio...');
+  console.log('🚀 BUILDING PORTFOLIO... HOPE IT WORKS (ง •̀_•́)ง');
   
   // Копируем статические файлы
   copyStaticFiles();
   
   // Читаем проекты
   const projects = readProjects();
-  console.log(`📁 Found ${projects.length} projects`);
+  console.log(`📁 FOUND ${projects.length} PROJECTS - NOT BAD ( ͡° ͜ʖ ͡°)`);
   
   // Генерируем страницы
   generateIndex(projects);
   generateProjectPages(projects);
   generateCSS();
   
-  console.log('✨ Build complete!');
+  console.log('✨ BUILD COMPLETE! EVERYTHING SHOULD WORK NOW (ﾉ◕ヮ◕)ﾉ*:･ﾟ✧');
 }
 
 // Запускаем сборку

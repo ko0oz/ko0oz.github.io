@@ -16,9 +16,8 @@
 <div id="site-description">
     Foundry'24<br>
     <a href="../index.html?tag=art">art</a><br>
-    11/2024<br><br>
+    11/2024
 </div>
-
 <!-- PROJECT CONTENT -->
 <p><img src="images/10.jpg" alt=""></p>
 <p>Foundry&#39;24 represents a collection of experimental works exploring the intersection of traditional craftsmanship and digital innovation.</p>
@@ -26,13 +25,15 @@
 <p>Each piece in this series challenges conventional notions of materiality and permanence in the digital age.</p>
 
 
+<!-- NAVIGATION -->
+<div class="nav-container"><div></div><a href="thiswasneverexisted.html" class="nav-btn nav-prev">thiswasneverexisted →</a></div>
+
 <div id="site-description">
-    <br>
     Background: <button class="ui-btn" id="themeToggle">black</button> / <button class="ui-btn" id="themeToggle2">white</button><br>
     Font: <button class="ui-btn" id="fontToggle">serif</button> / <button class="ui-btn" id="fontToggle2">sans</button><br>
     Accent color: <input type="color" id="accentColor" value="#0000FF" class="color-input"><br>
     Last update: <time id="lastModified"></time>.<br>
-    All rights reserved © <a href="index.html">Andrew Kuzmin</a>.<br>
+    All rights reserved © <a href="../index.html">Andrew Kuzmin</a>.<br>
 </div>
 <script>
     // UI Customization
@@ -149,25 +150,6 @@
     lastModif.textContent = new Date(document.lastModified).toLocaleString('en-US', options);
     lastModif.setAttribute("data-time", document.lastModified);
 
-    lastModif.addEventListener('click', function (event) {
-        let ago = new Date(document.lastModified);
-        let diff = new Date().getTime() - ago.getTime();
-        let progress = new Date(diff);
-        
-        if (progress.getUTCFullYear() - 1970) {
-            event.target.textContent = progress.getUTCFullYear() - 1970 + ' year' + (progress.getUTCFullYear() - 1971 > -1 ? 's' : '') + ' ago';
-        } else if (progress.getUTCMonth()) {
-            event.target.textContent = progress.getUTCMonth() + ' month' + (progress.getUTCMonth() > 1 ? 's' : '') + ' ago';
-        } else if (progress.getUTCDate() - 1) {
-            event.target.textContent = progress.getUTCDate() - 1 + ' day' + (progress.getUTCDate() - 2 > 0 ? 's' : '') + ' ago';
-        } else if (progress.getUTCHours()) {
-            event.target.textContent = progress.getUTCHours() + ' hour' + (progress.getUTCHours() > 1 ? 's' : '') + ' ago';
-        } else if (progress.getUTCMinutes()) {
-            event.target.textContent = progress.getUTCMinutes() + ' minute' + (progress.getUTCMinutes() > 1 ? 's' : '') + ' ago';
-        } else {
-            event.target.textContent = 'Now';
-        }
-    });
 </script>
 </body>
 </html>

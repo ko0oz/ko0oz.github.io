@@ -16,24 +16,21 @@
 <div id="site-description">
     thiswasneverexisted<br>
     <a href="../index.html?tag=art">art</a>, <a href="../index.html?tag=ai">ai</a><br>
-    07/2024<br><br>
+    07/2024
 </div>
-
 <!-- PROJECT CONTENT -->
-<p><img src="images/1.jpg" alt=""></p>
-<p>This project explores the concept of digital existence and the boundaries between real and virtual spaces.</p>
-<p><img src="images/2.jpg" alt=""></p>
-<p><img src="images/3.jpg" alt=""></p>
-<p>The work questions what it means to exist in a digital realm and how our perception of reality is shaped by technology.</p>
+<p><img src="thiswasneverexisted/1.jpg" alt=""><br>This project explores the concept of digital existence and the boundaries between real and virtual spaces.<br><img src="thiswasneverexisted/2.jpg" alt=""><br><img src="thiswasneverexisted/3.jpg" alt=""><br>The work questions what it means to exist in a digital realm and how our perception of reality is shaped by technology.</p>
 
+
+<!-- NAVIGATION -->
+<div class="nav-container"><a href="foundry24.html" class="nav-btn nav-next">← Foundry'24</a><a href="masa_madre.html" class="nav-btn nav-prev">Masa Madre →</a></div>
 
 <div id="site-description">
-    <br>
     Background: <button class="ui-btn" id="themeToggle">black</button> / <button class="ui-btn" id="themeToggle2">white</button><br>
     Font: <button class="ui-btn" id="fontToggle">serif</button> / <button class="ui-btn" id="fontToggle2">sans</button><br>
     Accent color: <input type="color" id="accentColor" value="#0000FF" class="color-input"><br>
     Last update: <time id="lastModified"></time>.<br>
-    All rights reserved © <a href="index.html">Andrew Kuzmin</a>.<br>
+    All rights reserved © <a href="../index.html">Andrew Kuzmin</a>.<br>
 </div>
 <script>
     // UI Customization
@@ -150,25 +147,6 @@
     lastModif.textContent = new Date(document.lastModified).toLocaleString('en-US', options);
     lastModif.setAttribute("data-time", document.lastModified);
 
-    lastModif.addEventListener('click', function (event) {
-        let ago = new Date(document.lastModified);
-        let diff = new Date().getTime() - ago.getTime();
-        let progress = new Date(diff);
-        
-        if (progress.getUTCFullYear() - 1970) {
-            event.target.textContent = progress.getUTCFullYear() - 1970 + ' year' + (progress.getUTCFullYear() - 1971 > -1 ? 's' : '') + ' ago';
-        } else if (progress.getUTCMonth()) {
-            event.target.textContent = progress.getUTCMonth() + ' month' + (progress.getUTCMonth() > 1 ? 's' : '') + ' ago';
-        } else if (progress.getUTCDate() - 1) {
-            event.target.textContent = progress.getUTCDate() - 1 + ' day' + (progress.getUTCDate() - 2 > 0 ? 's' : '') + ' ago';
-        } else if (progress.getUTCHours()) {
-            event.target.textContent = progress.getUTCHours() + ' hour' + (progress.getUTCHours() > 1 ? 's' : '') + ' ago';
-        } else if (progress.getUTCMinutes()) {
-            event.target.textContent = progress.getUTCMinutes() + ' minute' + (progress.getUTCMinutes() > 1 ? 's' : '') + ' ago';
-        } else {
-            event.target.textContent = 'Now';
-        }
-    });
 </script>
 </body>
 </html>

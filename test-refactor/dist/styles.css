@@ -115,6 +115,34 @@ body {
     padding: 0;
 }
 
+/* Remove margins from paragraphs in project content */
+p {
+    margin: 0;
+    padding: 0;
+}
+
+/* Navigation buttons */
+.nav-btn {
+    font-family: var(--font-family);
+    color: var(--accent-color);
+    text-decoration: none;
+    font-size: inherit;
+    margin: 0;
+}
+
+.nav-btn:hover {
+    text-decoration: underline;
+}
+
+/* Navigation container */
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
 /* Responsive design */
 @media all and (max-width: 600px) {
     .grid-container {
