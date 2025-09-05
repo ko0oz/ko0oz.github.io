@@ -1,0 +1,16 @@
+---
+title: "thiswasneverexisted"
+category: "art"
+year: "2024"
+mainImage: "images/4.jpg"
+---
+
+![images/1.jpg]
+
+This project explores the concept of digital existence and the boundaries between real and virtual spaces.
+
+![images/2.jpg]
+
+![images/3.jpg]
+
+The work questions what it means to exist in a digital realm and how our perception of reality is shaped by technology.

@@ -1,0 +1,15 @@
+{
+  "name": "portfolio-refactor",
+  "version": "1.0.0",
+  "description": "Refactored portfolio with Markdown + static generation",
+  "scripts": {
+    "dev": "python -m http.server 8000",
+    "build": "node scripts/generate.js",
+    "watch": "node scripts/watch.js"
+  },
+  "devDependencies": {
+    "chokidar": "^3.5.3",
+    "gray-matter": "^4.0.3",
+    "marked": "^9.1.6"
+  }
+}
