@@ -2,6 +2,7 @@
 title: "thiswasneverexisted"
 tags: ["art", "ai"]
 year: "2024"
+month: "07"
 mainImage: "images/4.jpg"
 ---
 

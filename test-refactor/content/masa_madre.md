@@ -2,6 +2,7 @@
 title: "Masa Madre"
 tags: ["3d", "visualization"]
 year: "2024"
+month: "03"
 mainImage: "images/30.png"
 ---
 

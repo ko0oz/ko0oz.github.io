@@ -2,6 +2,7 @@
 title: "Foundry'24"
 tags: ["art"]
 year: "2024"
+month: "11"
 mainImage: "images/9.jpg"
 ---
 

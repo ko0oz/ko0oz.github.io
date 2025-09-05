@@ -1,7 +1,8 @@
 ---
 title: "Halsa"
-tags: ["3d", "visualization", "ai"]
+tags: ["3d", "visualization"]
 year: "2023"
+month: "09"
 mainImage: "images/52.png"
 ---
 ![halsa/1.jpg]

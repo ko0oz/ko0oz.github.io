@@ -53,60 +53,45 @@ function copyDir(src, dest) {
   }
 }
 
-// Читаем все проекты
+// Читаем все проекты из Markdown файлов
 function readProjects() {
-  // Сначала читаем JSON с основными проектами
-  const jsonPath = path.join(config.contentDir, '..', 'projects.json');
-  let jsonProjects = [];
-  
-  if (fs.existsSync(jsonPath)) {
-    const jsonContent = fs.readFileSync(jsonPath, 'utf8');
-    jsonProjects = JSON.parse(jsonContent).projects;
-  }
-  
-  // Затем читаем Markdown файлы для проектов с контентом
   const contentFiles = fs.readdirSync(config.contentDir);
-  const markdownProjects = [];
-  
+  const projects = [];
+
   contentFiles.forEach(file => {
     if (file.endsWith('.md')) {
       const filePath = path.join(config.contentDir, file);
       const fileContent = fs.readFileSync(filePath, 'utf8');
       const { data: frontmatter, content } = matter(fileContent);
-      
-      markdownProjects.push({
+
+      projects.push({
         id: path.parse(file).name,
         ...frontmatter,
         content: content.trim(),
-        hasContent: true
+        hasContent: content.trim().length > 0, // Project has content if Markdown body is not empty
+        image: frontmatter.mainImage // Use mainImage as image for grid
       });
     }
   });
-  
-  // Объединяем проекты: если есть Markdown версия, используем её, иначе JSON
-  const allProjects = jsonProjects.map(jsonProject => {
-    const markdownProject = markdownProjects.find(md => md.id === jsonProject.id);
-    if (markdownProject) {
-      return {
-        ...jsonProject,
-        ...markdownProject,
-        // Сохраняем теги из JSON, если они есть
-        tags: jsonProject.tags || markdownProject.tags,
-        hasContent: true
-      };
-    }
-    return {
-      ...jsonProject,
-      hasContent: false
-    };
-  });
-  
-  return allProjects.sort((a, b) => {
-    // Сортируем по году, но учитываем диапазоны типа "2019—2021"
+
+  return projects.sort((a, b) => {
+    // Сортируем по году и месяцу
     const yearA = a.year.includes('—') ? a.year.split('—')[0] : a.year;
     const yearB = b.year.includes('—') ? b.year.split('—')[0] : b.year;
-    return new Date(yearB) - new Date(yearA);
+    const monthA = a.month || '01';
+    const monthB = b.month || '01';
+    
+    const dateA = new Date(`${yearA}-${monthA}-01`);
+    const dateB = new Date(`${yearB}-${monthB}-01`);
+    return dateB - dateA;
   });
+}
+
+// Форматируем дату для отображения
+function formatDate(project) {
+  const month = project.month || '01';
+  const year = project.year.includes('—') ? project.year.split('—')[0] : project.year;
+  return `${month}/${year}`;
 }
 
 // Читаем части страниц
@@ -125,16 +110,18 @@ function generateIndex(projects) {
   // Генерируем HTML для проектов
   const projectsHTML = projects.map(project => {
     const imagePath = project.image || project.mainImage || 'images/placeholder.jpg';
-    const hasLink = project.hasContent && project.link;
+    const hasLink = project.hasContent;
     const tags = project.tags || [];
     const tagsString = tags.join(',');
+    const projectLink = hasLink ? `projects/${project.id}.html` : null;
+    const formattedDate = formatDate(project);
     
     if (hasLink) {
       return `
-  <div class="grid-item" data-tags="${tagsString}"><a href="${project.link}"><img src="${imagePath}" alt="${project.title}"><br>${project.title}</a><br>${tags.join(', ')}<br>${project.year}<br><br></div>`;
+  <div class="grid-item" data-tags="${tagsString}"><a href="${projectLink}"><img src="${imagePath}" alt="${project.title}"><br>${project.title}</a><br>${tags.join(', ')}<br>${formattedDate}<br><br></div>`;
     } else {
       return `
-  <div class="grid-item" data-tags="${tagsString}"><img src="${imagePath}" alt="${project.title}"><br>${project.title}<br>${tags.join(', ')}<br>${project.year}<br><br></div>`;
+  <div class="grid-item" data-tags="${tagsString}"><img src="${imagePath}" alt="${project.title}"><br>${project.title}<br>${tags.join(', ')}<br>${formattedDate}<br><br></div>`;
     }
   }).join('\n');
   
@@ -185,13 +172,15 @@ function generateProjectPages(projects) {
       `<a href="../index.html?tag=${tag}">${tag}</a>`
     ).join(', ');
 
+    const formattedDate = formatDate(project);
+    
     const html = projectTemplate
       .replace('{{HEADER}}', header)
       .replace('{{FOOTER}}', footer)
       .replace(/{{TITLE}}/g, project.title)
       .replace(/{{TAGS}}/g, tagsString)
       .replace(/{{TAGS_LINKS}}/g, tagsLinks)
-      .replace(/{{YEAR}}/g, project.year)
+      .replace(/{{YEAR}}/g, formattedDate)
       .replace(/{{MAIN_IMAGE}}/g, imagePath)
       .replace(/{{CONTENT}}/g, contentHTML);
     
