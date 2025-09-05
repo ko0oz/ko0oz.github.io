@@ -3,39 +3,39 @@
 <head>
     <title>Masa Madre</title>
     <link rel="stylesheet" type="text/css" href="../styles.css">
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8">
-    <meta name="description" content="{{TITLE}} - cgi project by Andrew Kuzmin">
+    <meta name="description" content="Masa Madre - 3d, visualization project by Andrew Kuzmin">
 </head>
 <body>
 <div id="site-description">
-    <a href="/">Andrew Kuzmin</a><br>
-    {{TITLE}}, {{CATEGORY}}, 2024<br>
+    <a href="../index.html">Andrew Kuzmin</a><br><br>
+</div>
+
+<div id="site-description">
+    Masa Madre<br>
+    <a href="../index.html?tag=3d">3d</a>, <a href="../index.html?tag=visualization">visualization</a><br>
+    2024<br><br>
 </div>
 
 <!-- PROJECT CONTENT -->
-<img src="images/30.png" alt="{{TITLE}}">
-<br>
-<p>![images/36.png]</p>
+<p><img src="images/36.png" alt=""></p>
 <p>The present (Gegenwart) is always twofold: a temporal state and what is currently, spatially present to us. The present finds its expression here and now. It refuses accessibility, because in the moment of reflection the present withdraws and momentarily becomes the past. Therefore, it can only be viewed reflexively and retrospectively. Only in hindsight and through the process of historicizing, it becomes clear what the present was all about, what defined this particular present – and the possibilities of its potential for the future. (っ^‿^)っ It is in the present, where change begins.</p>
-<p>![images/48.jpg]</p>
-<p>![images/47.png]</p>
+<p><img src="images/48.jpg" alt=""></p>
+<p><img src="images/47.png" alt=""></p>
 
 
-<!-- FOOTER -->
 <div id="site-description">
     <br>
     Background: <button class="ui-btn" id="themeToggle">black</button> / <button class="ui-btn" id="themeToggle2">white</button><br>
     Font: <button class="ui-btn" id="fontToggle">serif</button> / <button class="ui-btn" id="fontToggle2">sans</button><br>
     Accent color: <input type="color" id="accentColor" value="#0000FF" class="color-input"><br>
-    <br>
     Last update: <time id="lastModified"></time>.<br>
-    All rights reserved © <a href="/">Andrew Kuzmin</a>.<br>
+    All rights reserved © <a href="index.html">Andrew Kuzmin</a>.<br>
 </div>
-</body>
 <script>
-    // UI Customization (same as index.html)
+    // UI Customization
     const themeToggle = document.getElementById('themeToggle');
     const themeToggle2 = document.getElementById('themeToggle2');
     const fontToggle = document.getElementById('fontToggle');
@@ -169,4 +169,5 @@
         }
     });
 </script>
+</body>
 </html>

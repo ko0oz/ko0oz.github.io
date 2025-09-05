@@ -1,6 +1,6 @@
 ---
 title: "Masa Madre"
-category: "cgi"
+tags: ["3d", "visualization"]
 year: "2024"
 mainImage: "images/30.png"
 ---

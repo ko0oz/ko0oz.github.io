@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Halsa</title>
+    <link rel="stylesheet" type="text/css" href="../styles.css">
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <meta name="description" content="Halsa - 3d, visualization project by Andrew Kuzmin">
+</head>
+<body>
+<div id="site-description">
+    <a href="../index.html">Andrew Kuzmin</a><br><br>
+</div>
+
+<div id="site-description">
+    Halsa<br>
+    <a href="../index.html?tag=3d">3d</a>, <a href="../index.html?tag=visualization">visualization</a><br>
+    2023<br><br>
+</div>
+
+<!-- PROJECT CONTENT -->
+<p><img src="halsa/1.jpg" alt=""><br>Case visuals. Designed by <a href="https://shuka.design/">Shuka Design</a>.<br>Halsa is a subscription service that delivers customized vitamin sets, using an AI algorithm to personalize nutrients based on online test results. Its rebranding enhances its presence in the E-commerce 2.0 market with a unified visual language, emphasizing self-care and healthy living. The brand&#39;s design combines a modular, two-cube packaging system for easy vitamin regimen management with functional typography, a distinct green color, and illustrations by Stepan Lipatov, Rodion Kitaev, and Alisa Gvozdeva. These elements represent the &quot;Health Constructor&quot; concept, highlighting Halsa&#39;s commitment to wellness, flexibility, and expert guidance in health.<br><img src="halsa/2.jpg" alt=""><br><img src="halsa/3.jpg" alt=""><br><img src="halsa/4.jpg" alt=""><br><img src="halsa/5.jpg" alt=""><br><img src="halsa/6.png" alt=""><br><img src="halsa/7.jpg" alt=""><br><img src="halsa/8.jpg" alt=""><br><img src="halsa/9.jpg" alt=""></p>
+
+
+<div id="site-description">
+    <br>
+    Background: <button class="ui-btn" id="themeToggle">black</button> / <button class="ui-btn" id="themeToggle2">white</button><br>
+    Font: <button class="ui-btn" id="fontToggle">serif</button> / <button class="ui-btn" id="fontToggle2">sans</button><br>
+    Accent color: <input type="color" id="accentColor" value="#0000FF" class="color-input"><br>
+    Last update: <time id="lastModified"></time>.<br>
+    All rights reserved © <a href="index.html">Andrew Kuzmin</a>.<br>
+</div>
+<script>
+    // UI Customization
+    const themeToggle = document.getElementById('themeToggle');
+    const themeToggle2 = document.getElementById('themeToggle2');
+    const fontToggle = document.getElementById('fontToggle');
+    const fontToggle2 = document.getElementById('fontToggle2');
+    const accentColor = document.getElementById('accentColor');
+    
+    // Load saved settings
+    const savedTheme = localStorage.getItem('portfolioTheme') || 'white';
+    const savedFont = localStorage.getItem('portfolioFont') || 'serif';
+    const savedAccentColor = localStorage.getItem('portfolioAccentColor') || '#0000FF';
+    
+    // Apply saved settings
+    applyTheme(savedTheme);
+    applyFont(savedFont);
+    applyAccentColor(savedAccentColor);
+    
+    // Theme toggle
+    themeToggle.addEventListener('click', () => {
+        applyTheme('black');
+        localStorage.setItem('portfolioTheme', 'black');
+        updateActiveButtons();
+    });
+    
+    themeToggle2.addEventListener('click', () => {
+        applyTheme('white');
+        localStorage.setItem('portfolioTheme', 'white');
+        updateActiveButtons();
+    });
+    
+    // Font toggle
+    fontToggle.addEventListener('click', () => {
+        applyFont('serif');
+        localStorage.setItem('portfolioFont', 'serif');
+        updateActiveButtons();
+    });
+    
+    fontToggle2.addEventListener('click', () => {
+        applyFont('sans');
+        localStorage.setItem('portfolioFont', 'sans');
+        updateActiveButtons();
+    });
+    
+    // Accent color
+    accentColor.addEventListener('change', (e) => {
+        applyAccentColor(e.target.value);
+        localStorage.setItem('portfolioAccentColor', e.target.value);
+    });
+    
+    function applyTheme(theme) {
+        if (theme === 'black') {
+            document.documentElement.style.setProperty('--bg-color', 'black');
+            document.documentElement.style.setProperty('--text-color', 'white');
+        } else {
+            document.documentElement.style.setProperty('--bg-color', 'white');
+            document.documentElement.style.setProperty('--text-color', 'black');
+        }
+    }
+    
+    function applyFont(font) {
+        if (font === 'serif') {
+            document.documentElement.style.setProperty('--font-family', 'times');
+        } else {
+            document.documentElement.style.setProperty('--font-family', 'arial');
+        }
+    }
+    
+    function applyAccentColor(color) {
+        document.documentElement.style.setProperty('--accent-color', color);
+        const links = document.querySelectorAll('a, .filter-btn, .ui-btn');
+        links.forEach(link => {
+            link.style.color = color;
+        });
+        accentColor.value = color;
+    }
+    
+    function updateActiveButtons() {
+        // Reset all buttons
+        document.querySelectorAll('.ui-btn').forEach(btn => btn.classList.remove('active'));
+        
+        // Set active theme button
+        if (localStorage.getItem('portfolioTheme') === 'black') {
+            themeToggle.classList.add('active');
+        } else {
+            themeToggle2.classList.add('active');
+        }
+        
+        // Set active font button
+        if (localStorage.getItem('portfolioFont') === 'serif') {
+            fontToggle.classList.add('active');
+        } else {
+            fontToggle2.classList.add('active');
+        }
+    }
+    
+    // Initialize active buttons
+    updateActiveButtons();
+
+    // Обновление времени последнего изменения
+    const lastModif = document.querySelector('#lastModified');
+    const options = { 
+        year: 'numeric', 
+        month: 'long', 
+        day: 'numeric', 
+        weekday: 'long', 
+        hour: '2-digit', 
+        minute: '2-digit', 
+        second: '2-digit', 
+        timeZoneName: 'short', 
+        hour12: false
+    };
+    lastModif.textContent = new Date(document.lastModified).toLocaleString('en-US', options);
+    lastModif.setAttribute("data-time", document.lastModified);
+
+    lastModif.addEventListener('click', function (event) {
+        let ago = new Date(document.lastModified);
+        let diff = new Date().getTime() - ago.getTime();
+        let progress = new Date(diff);
+        
+        if (progress.getUTCFullYear() - 1970) {
+            event.target.textContent = progress.getUTCFullYear() - 1970 + ' year' + (progress.getUTCFullYear() - 1971 > -1 ? 's' : '') + ' ago';
+        } else if (progress.getUTCMonth()) {
+            event.target.textContent = progress.getUTCMonth() + ' month' + (progress.getUTCMonth() > 1 ? 's' : '') + ' ago';
+        } else if (progress.getUTCDate() - 1) {
+            event.target.textContent = progress.getUTCDate() - 1 + ' day' + (progress.getUTCDate() - 2 > 0 ? 's' : '') + ' ago';
+        } else if (progress.getUTCHours()) {
+            event.target.textContent = progress.getUTCHours() + ' hour' + (progress.getUTCHours() > 1 ? 's' : '') + ' ago';
+        } else if (progress.getUTCMinutes()) {
+            event.target.textContent = progress.getUTCMinutes() + ' minute' + (progress.getUTCMinutes() > 1 ? 's' : '') + ' ago';
+        } else {
+            event.target.textContent = 'Now';
+        }
+    });
+</script>
+</body>
+</html>

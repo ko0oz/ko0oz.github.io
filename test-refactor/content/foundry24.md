@@ -1,6 +1,6 @@
 ---
 title: "Foundry'24"
-category: "art"
+tags: ["art"]
 year: "2024"
 mainImage: "images/9.jpg"
 ---

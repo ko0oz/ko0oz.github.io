@@ -90,6 +90,8 @@ function readProjects() {
       return {
         ...jsonProject,
         ...markdownProject,
+        // Сохраняем теги из JSON, если они есть
+        tags: jsonProject.tags || markdownProject.tags,
         hasContent: true
       };
     }
@@ -107,25 +109,38 @@ function readProjects() {
   });
 }
 
+// Читаем части страниц
+function readPartials(isProjectPage = false) {
+  const headerFile = isProjectPage ? 'header-project.html' : 'header.html';
+  const header = fs.readFileSync(path.join(config.templatesDir, 'partials', headerFile), 'utf8');
+  const footer = fs.readFileSync(path.join(config.templatesDir, 'partials', 'footer.html'), 'utf8');
+  return { header, footer };
+}
+
 // Генерируем главную страницу
 function generateIndex(projects) {
   const template = fs.readFileSync(path.join(config.templatesDir, 'index.html'), 'utf8');
+  const { header, footer } = readPartials();
   
   // Генерируем HTML для проектов
   const projectsHTML = projects.map(project => {
     const imagePath = project.image || project.mainImage || 'images/placeholder.jpg';
     const hasLink = project.hasContent && project.link;
+    const tags = project.tags || [];
+    const tagsString = tags.join(',');
     
     if (hasLink) {
       return `
-  <div class="grid-item ${project.category}"><a href="${project.link}"><img src="${imagePath}" alt="${project.title}"><br>${project.title}</a><br>${project.category}<br>${project.year}<br><br></div>`;
+  <div class="grid-item" data-tags="${tagsString}"><a href="${project.link}"><img src="${imagePath}" alt="${project.title}"><br>${project.title}</a><br>${tags.join(', ')}<br>${project.year}<br><br></div>`;
     } else {
       return `
-  <div class="grid-item ${project.category}"><img src="${imagePath}" alt="${project.title}"><br>${project.title}<br>${project.category}<br>${project.year}<br><br></div>`;
+  <div class="grid-item" data-tags="${tagsString}"><img src="${imagePath}" alt="${project.title}"><br>${project.title}<br>${tags.join(', ')}<br>${project.year}<br><br></div>`;
     }
   }).join('\n');
   
   const html = template
+    .replace('{{HEADER}}', header)
+    .replace('{{FOOTER}}', footer)
     .replace('{{PROJECTS_HTML}}', projectsHTML)
     .replace('{{TOTAL_PROJECTS}}', projects.length);
   
@@ -136,6 +151,7 @@ function generateIndex(projects) {
 // Генерируем страницы проектов
 function generateProjectPages(projects) {
   const projectTemplate = fs.readFileSync(path.join(config.templatesDir, 'project.html'), 'utf8');
+  const { header, footer } = readPartials(true);
   
   if (!fs.existsSync(path.join(config.outputDir, 'projects'))) {
     fs.mkdirSync(path.join(config.outputDir, 'projects'), { recursive: true });
@@ -145,15 +161,39 @@ function generateProjectPages(projects) {
   const projectsWithContent = projects.filter(project => project.hasContent);
   
   projectsWithContent.forEach(project => {
-    const contentHTML = marked(project.content);
+    // Настраиваем marked для правильной обработки изображений
+    const renderer = new marked.Renderer();
+    renderer.image = function(href, title, text) {
+      return `<img src="${href}" alt="${text}">`;
+    };
+    
+    marked.setOptions({
+      renderer: renderer,
+      breaks: true
+    });
+    
+    // Исправляем синтаксис изображений в Markdown
+    const fixedContent = project.content.replace(/!\[([^\]]*)\]/g, '![]($1)');
+    const contentHTML = marked(fixedContent);
     const imagePath = project.image || project.mainImage || 'images/placeholder.jpg';
     
+    const tags = project.tags || [];
+    const tagsString = tags.join(', ');
+    
+    // Создаем кликабельные теги
+    const tagsLinks = tags.map(tag => 
+      `<a href="../index.html?tag=${tag}">${tag}</a>`
+    ).join(', ');
+
     const html = projectTemplate
-      .replace('{{TITLE}}', project.title)
-      .replace('{{CATEGORY}}', project.category)
-      .replace('{{YEAR}}', project.year)
-      .replace('{{MAIN_IMAGE}}', imagePath)
-      .replace('{{CONTENT}}', contentHTML);
+      .replace('{{HEADER}}', header)
+      .replace('{{FOOTER}}', footer)
+      .replace(/{{TITLE}}/g, project.title)
+      .replace(/{{TAGS}}/g, tagsString)
+      .replace(/{{TAGS_LINKS}}/g, tagsLinks)
+      .replace(/{{YEAR}}/g, project.year)
+      .replace(/{{MAIN_IMAGE}}/g, imagePath)
+      .replace(/{{CONTENT}}/g, contentHTML);
     
     const outputPath = path.join(config.outputDir, 'projects', `${project.id}.html`);
     fs.writeFileSync(outputPath, html);

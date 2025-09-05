@@ -3,35 +3,25 @@
 <head>
     <title>{{TITLE}}</title>
     <link rel="stylesheet" type="text/css" href="../styles.css">
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8">
-    <meta name="description" content="{{TITLE}} - {{CATEGORY}} project by Andrew Kuzmin">
+    <meta name="description" content="{{TITLE}} - {{TAGS}} project by Andrew Kuzmin">
 </head>
 <body>
+{{HEADER}}
 <div id="site-description">
-    <a href="/">Andrew Kuzmin</a><br>
-    {{TITLE}}, {{CATEGORY}}, {{YEAR}}<br>
+    {{TITLE}}<br>
+    {{TAGS_LINKS}}<br>
+    {{YEAR}}<br><br>
 </div>
 
 <!-- PROJECT CONTENT -->
-<img src="{{MAIN_IMAGE}}" alt="{{TITLE}}">
-<br>
 {{CONTENT}}
 
-<!-- FOOTER -->
-<div id="site-description">
-    <br>
-    Background: <button class="ui-btn" id="themeToggle">black</button> / <button class="ui-btn" id="themeToggle2">white</button><br>
-    Font: <button class="ui-btn" id="fontToggle">serif</button> / <button class="ui-btn" id="fontToggle2">sans</button><br>
-    Accent color: <input type="color" id="accentColor" value="#0000FF" class="color-input"><br>
-    <br>
-    Last update: <time id="lastModified"></time>.<br>
-    All rights reserved © <a href="/">Andrew Kuzmin</a>.<br>
-</div>
-</body>
+{{FOOTER}}
 <script>
-    // UI Customization (same as index.html)
+    // UI Customization
     const themeToggle = document.getElementById('themeToggle');
     const themeToggle2 = document.getElementById('themeToggle2');
     const fontToggle = document.getElementById('fontToggle');
@@ -165,4 +155,5 @@
         }
     });
 </script>
+</body>
 </html>

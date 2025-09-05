@@ -19,6 +19,10 @@ a {
     color: #0226ff;
     text-decoration: none;
 }
+
+a:hover {
+    text-decoration: underline;
+}
 :root {
     --text-color: black;
     --bg-color: white;
@@ -42,8 +46,18 @@ body {
     font-family: var(--font-family);
     padding: 0px 0px;
     margin: 0 0px;
-    text-decoration: underline;
+    text-decoration: none;
     text-align: left;
+}
+
+#site-description .filter-btn:hover {
+    text-decoration: underline;
+}
+
+#site-description .filter-btn.active {
+    color: var(--text-color) !important;
+    text-decoration: underline !important;
+    cursor: default;
 }
 
 /* UI Customization buttons */
@@ -55,8 +69,12 @@ body {
     font-family: var(--font-family);
     padding: 0px 0px;
     margin: 0 2px;
-    text-decoration: underline;
+    text-decoration: none;
     font-size: inherit;
+}
+
+.ui-btn:hover {
+    text-decoration: underline;
 }
 
 .ui-btn.active {

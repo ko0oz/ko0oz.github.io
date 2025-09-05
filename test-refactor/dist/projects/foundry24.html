@@ -3,39 +3,39 @@
 <head>
     <title>Foundry'24</title>
     <link rel="stylesheet" type="text/css" href="../styles.css">
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8">
-    <meta name="description" content="{{TITLE}} - art project by Andrew Kuzmin">
+    <meta name="description" content="Foundry'24 - art project by Andrew Kuzmin">
 </head>
 <body>
 <div id="site-description">
-    <a href="/">Andrew Kuzmin</a><br>
-    {{TITLE}}, {{CATEGORY}}, 2024<br>
+    <a href="../index.html">Andrew Kuzmin</a><br><br>
+</div>
+
+<div id="site-description">
+    Foundry'24<br>
+    <a href="../index.html?tag=art">art</a><br>
+    2024<br><br>
 </div>
 
 <!-- PROJECT CONTENT -->
-<img src="images/9.jpg" alt="{{TITLE}}">
-<br>
-<p>![images/10.jpg]</p>
+<p><img src="images/10.jpg" alt=""></p>
 <p>Foundry&#39;24 represents a collection of experimental works exploring the intersection of traditional craftsmanship and digital innovation.</p>
-<p>![images/11.jpg]</p>
+<p><img src="images/11.jpg" alt=""></p>
 <p>Each piece in this series challenges conventional notions of materiality and permanence in the digital age.</p>
 
 
-<!-- FOOTER -->
 <div id="site-description">
     <br>
     Background: <button class="ui-btn" id="themeToggle">black</button> / <button class="ui-btn" id="themeToggle2">white</button><br>
     Font: <button class="ui-btn" id="fontToggle">serif</button> / <button class="ui-btn" id="fontToggle2">sans</button><br>
     Accent color: <input type="color" id="accentColor" value="#0000FF" class="color-input"><br>
-    <br>
     Last update: <time id="lastModified"></time>.<br>
-    All rights reserved © <a href="/">Andrew Kuzmin</a>.<br>
+    All rights reserved © <a href="index.html">Andrew Kuzmin</a>.<br>
 </div>
-</body>
 <script>
-    // UI Customization (same as index.html)
+    // UI Customization
     const themeToggle = document.getElementById('themeToggle');
     const themeToggle2 = document.getElementById('themeToggle2');
     const fontToggle = document.getElementById('fontToggle');
@@ -169,4 +169,5 @@
         }
     });
 </script>
+</body>
 </html>

@@ -15,49 +15,59 @@
     <meta name="description" content="Andrew Kuzmin - Multidisciplinary designer and artist">
 </head>
 <body>
+{{HEADER}}
 <div id="site-description">
-    <a href="https://ko0oz.github.io/">Andrew Kuzmin</a><br><br>
     Multidisciplinary self-taught designer and artist with 10+ years of experience. Mostly I do branding, packaging, 3D & AI, motion design, typography and web.
     Had deal with: Fuck You Digital, GUNNA, Kinopoisk, Lena Kuka, Labelcom, Omsky Studio, Raiffesien Bank, Samokat, Sber, Shuka Design, Tinkoff Bank, Yandex.
     Job experience: BBDO Branding (Creative Director, 2021—2024), Redday (Art Director, 2018—2021), Logomachine (Graphic Designer, 2014—2016). Contact: <a href="mailto: kooozmeeen@gmail.com">kooozmeeen@gmail.com</a>, <a href="https://www.instagram.com/ko0oz">Instagram</a>, <a href="https://www.behance.net/koozmeen">Bēhance</a>, <a href="https://t.me/koozmeen">Telegram</a>.
     <br><br>
     Projects:
-    <a class="filter-btn" href="/">all</a>,
-    <a class="filter-btn" href="/?category=design">design</a>,
-    <a class="filter-btn" href="/?category=cgi">cgi</a>, 
-    <a class="filter-btn" href="/?category=art">art</a>.
-    <br>
-    <br>
+    <a class="filter-btn" href="index.html">all</a>,
+    <a class="filter-btn" href="index.html?tag=design">design</a>,
+    <a class="filter-btn" href="index.html?tag=visualization">visualization</a>,
+    <a class="filter-btn" href="index.html?tag=art">art</a>,
+    <a class="filter-btn" href="index.html?tag=3d">3d</a>,
+    <a class="filter-btn" href="index.html?tag=ai">ai</a>,
+    <a class="filter-btn" href="index.html?tag=founder">founder</a>.
+    <br><br>
 </div>
 <div class="grid-container">
 {{PROJECTS_HTML}}
 </div>
-<div id="site-description">
-    <br>
-    Background: <button class="ui-btn" id="themeToggle">black</button> / <button class="ui-btn" id="themeToggle2">white</button><br>
-    Font: <button class="ui-btn" id="fontToggle">serif</button> / <button class="ui-btn" id="fontToggle2">sans</button><br>
-    Accent color: <input type="color" id="accentColor" value="#0000FF" class="color-input"><br>
-    <br>
-    Last update: <time id="lastModified"></time>.<br>
-    All rights reserved © <a href="/">Andrew Kuzmin</a>.<br>
-</div>
-</body>
+{{FOOTER}}
 <script>
     // Фильтрация проектов
     const siteDescription = document.getElementById('site-description');
     const mainContent = document.querySelector('.grid-container');
     const gridItems = document.querySelectorAll('.grid-item');
      
-    // Get category from URL parameter
+    // Get tag from URL parameter
     const urlParams = new URLSearchParams(window.location.search);
-    const selectedCategory = urlParams.get('category') || 'all';
+    const selectedTag = urlParams.get('tag') || 'all';
     
-    // Apply filtering based on the selected category
+    // Apply filtering based on the selected tag
     gridItems.forEach(item =>{
-        if (selectedCategory === 'all' || item.classList.contains(selectedCategory)) {
+        if (selectedTag === 'all') {
             item.style.display = 'block';
         } else {
-            item.style.display = 'none';
+            // Check if project has the selected tag
+            const projectTags = item.getAttribute('data-tags');
+            if (projectTags && projectTags.split(',').includes(selectedTag)) {
+                item.style.display = 'block';
+            } else {
+                item.style.display = 'none';
+            }
+        }
+    });
+    
+    // Highlight active filter
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    filterBtns.forEach(btn => {
+        btn.classList.remove('active');
+        const href = btn.getAttribute('href');
+        if ((selectedTag === 'all' && href === 'index.html') || 
+            (selectedTag !== 'all' && href === `index.html?tag=${selectedTag}`)) {
+            btn.classList.add('active');
         }
     });
 

@@ -1,6 +1,6 @@
 ---
 title: "thiswasneverexisted"
-category: "art"
+tags: ["art", "ai"]
 year: "2024"
 mainImage: "images/4.jpg"
 ---

@@ -3,7 +3,7 @@
     {
       "id": "masa_madre",
       "title": "Masa Madre",
-      "category": "cgi",
+      "tags": ["3d", "visualization"],
       "year": "2024",
       "image": "images/30.png",
       "link": "projects/masa_madre.html"
@@ -11,7 +11,7 @@
     {
       "id": "thiswasneverexisted",
       "title": "thiswasneverexisted",
-      "category": "art",
+      "tags": ["art", "ai"],
       "year": "2024",
       "image": "images/4.jpg",
       "link": "projects/thiswasneverexisted.html"
@@ -19,7 +19,7 @@
     {
       "id": "foundry24",
       "title": "Foundry'24",
-      "category": "art",
+      "tags": ["art"],
       "year": "2024",
       "image": "images/9.jpg",
       "link": "projects/foundry24.html"
@@ -27,7 +27,7 @@
     {
       "id": "halsa",
       "title": "Halsa",
-      "category": "cgi",
+      "tags": ["3d", "visualization"],
       "year": "2023",
       "image": "images/52.png",
       "link": "projects/halsa.html"
@@ -35,196 +35,196 @@
     {
       "id": "fc_dynamo_moscow",
       "title": "FC Dynamo Moscow",
-      "category": "design",
+      "tags": ["design"],
       "year": "2023",
       "image": "images/51.jpg"
     },
     {
       "id": "artworks_23",
       "title": "Artworks'23",
-      "category": "art",
+      "tags": ["art"],
       "year": "2023",
       "image": "images/22.jpg"
     },
     {
       "id": "capsule",
       "title": "Capsule",
-      "category": "cgi",
+      "tags": ["3d", "visualization"],
       "year": "2023",
       "image": "images/50.jpg"
     },
     {
       "id": "rr",
       "title": "RR",
-      "category": "design",
+      "tags": ["design"],
       "year": "2023",
       "image": "images/1.jpg"
     },
     {
       "id": "7am_coffee",
       "title": "7a.m coffee",
-      "category": "cgi",
+      "tags": ["3d", "visualization"],
       "year": "2023",
       "image": "images/45.png"
     },
     {
       "id": "world_art_dubai_23",
       "title": "World Art Dubai'23",
-      "category": "art",
+      "tags": ["art"],
       "year": "2023",
       "image": "images/20.jpg"
     },
     {
       "id": "artridge",
       "title": "Artridge",
-      "category": "design",
+      "tags": ["design"],
       "year": "2023",
       "image": "images/47.png"
     },
     {
       "id": "artworks_22",
       "title": "Artworks'22",
-      "category": "art",
+      "tags": ["art"],
       "year": "2022",
       "image": "images/48.jpg"
     },
     {
       "id": "every_knight_shit",
       "title": "Every Knight Shit",
-      "category": "art",
+      "tags": ["art"],
       "year": "2022",
       "image": "images/25.jpg"
     },
     {
       "id": "amazigh_beer",
       "title": "Amazigh Beer",
-      "category": "cgi",
+      "tags": ["3d", "visualization"],
       "year": "2022",
       "image": "images/46.jpg"
     },
     {
       "id": "foxford",
       "title": "Foxford",
-      "category": "design",
+      "tags": ["design"],
       "year": "2022",
       "image": "images/54.png"
     },
     {
       "id": "kinopoisk",
       "title": "Kinopoisk",
-      "category": "design",
+      "tags": ["design"],
       "year": "2022",
       "image": "images/53.jpg"
     },
     {
       "id": "sketchar",
       "title": "Sketchar",
-      "category": "design",
+      "tags": ["design"],
       "year": "2022",
       "image": "images/42.png"
     },
     {
       "id": "petro_aesthetics",
       "title": "Petro Aesthetics",
-      "category": "art",
+      "tags": ["art"],
       "year": "2022",
       "image": "images/40.jpg"
     },
     {
       "id": "ben_baller",
       "title": "Ben Baller",
-      "category": "design",
+      "tags": ["design"],
       "year": "2022",
       "image": "images/37.png"
     },
     {
       "id": "gunna",
       "title": "Gunna",
-      "category": "design",
+      "tags": ["design"],
       "year": "2022",
       "image": "images/5.jpg"
     },
     {
       "id": "viceseason",
       "title": "Viceseason",
-      "category": "design",
+      "tags": ["design"],
       "year": "2022",
       "image": "images/10.jpg"
     },
     {
       "id": "confirm_payment",
       "title": "Confirm payment",
-      "category": "art",
+      "tags": ["art"],
       "year": "2022",
       "image": "images/24.jpg"
     },
     {
       "id": "yandex_ny_20_21_22",
       "title": "Yandex NY'20'21'22",
-      "category": "design",
+      "tags": ["design"],
       "year": "2019—2021",
       "image": "images/51.png"
     },
     {
       "id": "labelcom",
       "title": "Labelcom",
-      "category": "design",
+      "tags": ["design"],
       "year": "2021",
       "image": "images/55.jpg"
     },
     {
       "id": "yandex_geo_bd",
       "title": "Yandex GEO BD",
-      "category": "design",
+      "tags": ["design"],
       "year": "2021",
       "image": "images/36.png"
     },
     {
       "id": "lena_kuka",
       "title": "Lena Kuka",
-      "category": "design",
+      "tags": ["design"],
       "year": "2020",
       "image": "images/35.jpg"
     },
     {
       "id": "studio96",
       "title": "Studio96",
-      "category": "design",
+      "tags": ["design"],
       "year": "2020",
       "image": "images/49.jpg"
     },
     {
       "id": "redday",
       "title": "Redday",
-      "category": "design",
+      "tags": ["design", "founder"],
       "year": "2019—2021",
       "image": "images/3.jpg"
     },
     {
       "id": "olga_shulginova",
       "title": "Olga Shul'ginova",
-      "category": "design",
+      "tags": ["design"],
       "year": "2016",
       "image": "images/32.jpg"
     },
     {
       "id": "villa_capri",
       "title": "Villa Capri",
-      "category": "design",
+      "tags": ["design"],
       "year": "2016",
       "image": "images/54.jpg"
     },
     {
       "id": "indivita",
       "title": "Indivita",
-      "category": "design",
+      "tags": ["design"],
       "year": "2015",
       "image": "images/33.jpg"
     },
     {
       "id": "over_quell",
       "title": "Over Quell",
-      "category": "design",
+      "tags": ["design"],
       "year": "2015",
       "image": "images/34.jpg"
     }

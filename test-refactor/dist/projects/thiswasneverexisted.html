@@ -3,40 +3,40 @@
 <head>
     <title>thiswasneverexisted</title>
     <link rel="stylesheet" type="text/css" href="../styles.css">
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8">
-    <meta name="description" content="{{TITLE}} - art project by Andrew Kuzmin">
+    <meta name="description" content="thiswasneverexisted - art, ai project by Andrew Kuzmin">
 </head>
 <body>
 <div id="site-description">
-    <a href="/">Andrew Kuzmin</a><br>
-    {{TITLE}}, {{CATEGORY}}, 2024<br>
+    <a href="../index.html">Andrew Kuzmin</a><br><br>
+</div>
+
+<div id="site-description">
+    thiswasneverexisted<br>
+    <a href="../index.html?tag=art">art</a>, <a href="../index.html?tag=ai">ai</a><br>
+    2024<br><br>
 </div>
 
 <!-- PROJECT CONTENT -->
-<img src="images/4.jpg" alt="{{TITLE}}">
-<br>
-<p>![images/1.jpg]</p>
+<p><img src="images/1.jpg" alt=""></p>
 <p>This project explores the concept of digital existence and the boundaries between real and virtual spaces.</p>
-<p>![images/2.jpg]</p>
-<p>![images/3.jpg]</p>
+<p><img src="images/2.jpg" alt=""></p>
+<p><img src="images/3.jpg" alt=""></p>
 <p>The work questions what it means to exist in a digital realm and how our perception of reality is shaped by technology.</p>
 
 
-<!-- FOOTER -->
 <div id="site-description">
     <br>
     Background: <button class="ui-btn" id="themeToggle">black</button> / <button class="ui-btn" id="themeToggle2">white</button><br>
     Font: <button class="ui-btn" id="fontToggle">serif</button> / <button class="ui-btn" id="fontToggle2">sans</button><br>
     Accent color: <input type="color" id="accentColor" value="#0000FF" class="color-input"><br>
-    <br>
     Last update: <time id="lastModified"></time>.<br>
-    All rights reserved © <a href="/">Andrew Kuzmin</a>.<br>
+    All rights reserved © <a href="index.html">Andrew Kuzmin</a>.<br>
 </div>
-</body>
 <script>
-    // UI Customization (same as index.html)
+    // UI Customization
     const themeToggle = document.getElementById('themeToggle');
     const themeToggle2 = document.getElementById('themeToggle2');
     const fontToggle = document.getElementById('fontToggle');
@@ -170,4 +170,5 @@
         }
     });
 </script>
+</body>
 </html>
