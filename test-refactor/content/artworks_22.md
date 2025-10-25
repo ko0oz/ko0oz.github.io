@@ -1,7 +1,7 @@
 ---
-title: "Artworks'22"
+title: "🗁 Artworks'22"
 tags: ["art"]
 year: "2022"
-month: "01"
+month: "--"
 mainImage: "images/48.jpg"
 ---

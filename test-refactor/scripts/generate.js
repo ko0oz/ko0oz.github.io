@@ -75,15 +75,19 @@ function readProjects() {
   });
 
   return projects.sort((a, b) => {
-    // Сортируем по году и месяцу
-    const yearA = a.year.includes('—') ? a.year.split('—')[0] : a.year;
-    const yearB = b.year.includes('—') ? b.year.split('—')[0] : b.year;
-    const monthA = a.month || '01';
-    const monthB = b.month || '01';
+    // Простая сортировка: сначала по году, потом по месяцу
+    const yearA = parseInt(a.year.includes('—') ? a.year.split('—')[0] : a.year) || 0;
+    const yearB = parseInt(b.year.includes('—') ? b.year.split('—')[0] : b.year) || 0;
     
-    const dateA = new Date(`${yearA}-${monthA}-01`);
-    const dateB = new Date(`${yearB}-${monthB}-01`);
-    return dateB - dateA;
+    // Сначала по году (новые сверху)
+    if (yearA !== yearB) {
+      return yearB - yearA;
+    }
+    
+    // Потом по месяцу (новые сверху)
+    const monthA = a.month || '00';
+    const monthB = b.month || '00';
+    return monthB.localeCompare(monthA);
   });
 }
 
@@ -110,7 +114,7 @@ function checkMissingFiles(content, projectId) {
   }
   
   if (missingFiles.length > 0) {
-    console.log(`⚠️  SOMETHING WRONG WITH FILES IN PROJECT ${projectId.toUpperCase()} (╯°□°）╯︵ ┻━┻:`, missingFiles);
+    console.log(`Missing files in project ${projectId}:`, missingFiles);
   }
   
   return missingFiles;
@@ -154,7 +158,7 @@ function generateIndex(projects) {
     .replace('{{TOTAL_PROJECTS}}', projects.length);
   
   fs.writeFileSync(path.join(config.outputDir, 'index.html'), html);
-  console.log('✅ GENERATED INDEX.HTML - MAIN PAGE IS READY (◕‿◕)');
+  console.log('Generated index.html');
 }
 
 // Генерируем страницы проектов
@@ -238,7 +242,7 @@ function generateProjectPages(projects) {
     
     const outputPath = path.join(config.outputDir, 'projects', `${project.id}.html`);
     fs.writeFileSync(outputPath, html);
-    console.log(`✅ GENERATED PROJECTS/${project.id.toUpperCase()}.HTML - ANOTHER PAGE DONE (｡◕‿◕｡)`);
+    console.log(`Generated projects/${project.id}.html`);
   });
 }
 
@@ -246,26 +250,26 @@ function generateProjectPages(projects) {
 function generateCSS() {
   const css = fs.readFileSync(path.join(config.templatesDir, 'styles.css'), 'utf8');
   fs.writeFileSync(path.join(config.outputDir, 'styles.css'), css);
-  console.log('✅ GENERATED STYLES.CSS - LOOKING GOOD (◡ ‿ ◡)');
+  console.log('Generated styles.css');
 }
 
 // Основная функция
 function build() {
-  console.log('🚀 BUILDING PORTFOLIO... HOPE IT WORKS (ง •̀_•́)ง');
+  console.log('Building portfolio...');
   
   // Копируем статические файлы
   copyStaticFiles();
   
   // Читаем проекты
   const projects = readProjects();
-  console.log(`📁 FOUND ${projects.length} PROJECTS - NOT BAD ( ͡° ͜ʖ ͡°)`);
+  console.log(`Found ${projects.length} projects`);
   
   // Генерируем страницы
   generateIndex(projects);
   generateProjectPages(projects);
   generateCSS();
   
-  console.log('✨ BUILD COMPLETE! EVERYTHING SHOULD WORK NOW (ﾉ◕ヮ◕)ﾉ*:･ﾟ✧');
+  console.log('Build complete');
 }
 
 // Запускаем сборку

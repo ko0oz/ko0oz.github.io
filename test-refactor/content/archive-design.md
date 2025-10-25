@@ -1,7 +1,7 @@
 ---
-title: "Yandex GEO BD"
+title: "🗁 archive"
 tags: ["design"]
-year: "2021"
-month: "07"
+year: "----"
+month: "--"
 mainImage: "images/36.png"
 ---

@@ -132,8 +132,10 @@
     function applyFont(font) {
         if (font === 'serif') {
             document.documentElement.style.setProperty('--font-family', 'times');
+            document.body.removeAttribute('style');
         } else {
             document.documentElement.style.setProperty('--font-family', 'arial');
+            document.body.setAttribute('style', 'font-family: arial');
         }
     }
     
@@ -158,7 +160,8 @@
         }
         
         // Set active font button
-        if (localStorage.getItem('portfolioFont') === 'serif') {
+        const currentFont = localStorage.getItem('portfolioFont') || 'serif';
+        if (currentFont === 'serif') {
             fontToggle.classList.add('active');
         } else {
             fontToggle2.classList.add('active');
